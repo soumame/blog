@@ -4,7 +4,7 @@ import { getDatabase } from '../lib/notion/client.ts'
 import { getNavLink, getStaticFilePath, filePath } from '../lib/blog-helpers.ts'
 import '../styles/syntax-coloring.css'
 import GoogleAnalytics from '../components/GoogleAnalytics.astro'
-import Socials from '../components/socials.astro'
+import SocialsLink from '../components/socials.astro'
 
 export interface Props {
   title: string
@@ -135,7 +135,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
 
       <aside class="m-4 p-4 mr-4 md:w-60 w-full  order-2 md:order-1 bg-gray-200 rounded-xl">
         <slot name="aside" />
-        <Socials/>
+        <SocialsLink/>
       </aside>
     </div>
 
