@@ -9,16 +9,14 @@ export interface Props {
 const { post } = Astro.props
 ---
 
-<div class="read-more-link">
-  <a href={getPostLink(post.Slug)}>→Read more</a>
-</div>
+  <a class="read-more-link absolute top-0 left-0 w-[100%] h-[100%]" href={getPostLink(post.Slug)}></a>
 
 <style>
   .read-more-link {
     color: var(--fg);
   }
   .read-more-link a {
-    color: rgb(55, 53, 47);
+    color: rgb(59, 130, 246);
     font-size: 1rem;
     font-weight: 500;
     line-height: 2rem;

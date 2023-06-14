@@ -64,41 +64,41 @@
 
 .tag.light-gray {
   color: rgb(28, 56, 41);
-  background: rgba(227, 226, 224, 0.5) !important;
+  background: rgba(230, 230, 230, 0.5) !important;
 }
 .tag.gray {
   color: rgb(28, 56, 41);
-  background: rgb(227, 226, 224) !important;
+  background: rgb(154, 154, 154) !important;
 }
 .tag.brown {
   color: rgb(28, 56, 41);
-  background: rgb(238, 224, 218) !important;
+  background: rgb(194, 152, 134) !important;
 }
 .tag.orange {
   color: rgb(28, 56, 41);
-  background: rgb(250, 222, 201) !important;
+  background: rgb(244, 192, 152) !important;
 }
 .tag.yellow {
   color: rgb(28, 56, 41);
-  background: rgb(253, 236, 200) !important;
+  background: rgb(250, 218, 149) !important;
 }
 .tag.green {
   color: rgb(28, 56, 41);
-  background: rgb(219, 237, 219) !important;
+  background: rgb(136, 219, 136) !important;
 }
 .tag.blue {
   color: rgb(28, 56, 41);
-  background: rgb(211, 229, 239) !important;
+  background: rgb(157, 221, 255) !important;
 }
 .tag.purple {
   color: rgb(28, 56, 41);
-  background: rgb(232, 222, 238) !important;
+  background: rgb(223, 169, 255) !important;
 }
 .tag.pink {
   color: rgb(28, 56, 41);
-  background: rgb(245, 224, 233) !important;
+  background: rgb(255, 162, 202) !important;
 }
 .tag.red {
   color: rgb(28, 56, 41);
-  background: rgb(255, 226, 221) !important;
+  background: rgb(255, 177, 163) !important;
 }
