@@ -74,8 +74,8 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     />
   </head>
   <body>
-    <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
-    <div class="flex flex-wrap max-w-full min-h-[100vh] bg-white dark:bg-slate-700">
+    <GoogleAnalytics trackingId={'G-ZSQ9BEHZ6R'} />
+    <div class="flex flex-wrap max-w-full min-h-[100vh] bg-white">
       <main>
         {
           coverImageURL && (
@@ -105,7 +105,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
                   }
                 </a>
                 <br>
-                <a href="https://souto.tk" class="bg-gray-300 rounded-xl px-4 py-3 text-sm">
+                <a href="https://souto.tk" class="bg-gray-300/50 backdrop-blur-md rounded-xl px-4 py-3 text-sm ">
                   See Profile
                 </a>
               </div>
@@ -137,7 +137,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
         </div>
       </main>
 
-      <aside class="m-4 p-4 mr-4 md:w-60 w-full  order-2 md:order-1 bg-gray-200 rounded-xl">
+      <aside class="m-4 p-4 mr-4 md:w-60 w-full order-2 md:order-1 bg-gray-200 rounded-xl">
         <slot name="aside" />
           <a href="https://twitter.com/so_to9" class="bg-slate-500 mb-2 inline-block rounded-2xl px-4 py-3.5 text-xs font-medium leading-normal dark:hover:shadow-white/30 hover:shadow-black/30 text-white transition ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg">
             <svg
@@ -196,7 +196,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     display: flex;
     min-height: 100vh;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .container {
       display: block;
     }
@@ -207,23 +207,9 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     order: 2;
     justify-content: space-between;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     main {
       order: 1;
-    }
-  }
-
-  -aside {
-    order: 1;
-    width: 300px;
-    padding: var(--asidePaddingTop) 20px 20px;
-    background-color: #f4f4f4;
-  }
-  @media (max-width: 640px) {
-    -aside {
-      order: 2;
-      width: 100%;
-      padding: 40px 20px 20px;
     }
   }
 
@@ -240,7 +226,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   div.content {
     padding: 20px 40px;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     div.content {
       padding: 0 18px;
     }
@@ -290,7 +276,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     text-align: center;
     font-size: 0.75rem;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     main footer {
       margin: 0 auto 30px;
     }
@@ -409,7 +395,7 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
     font-weight: 700;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     h1 {
       font-size: 1.6rem;
     }

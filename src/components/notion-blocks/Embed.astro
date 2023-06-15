@@ -22,7 +22,7 @@ try {
 {
   url ? (
     isTweetURL(url) ? (
-      <div class="tweet-embed">
+      <div class="tweet-embed m-auto w-full max-w-[600px]">
         <TweetEmbed url={url} />
       </div>
     ) : (
@@ -31,8 +31,9 @@ try {
   ) : null
 }
 
+<!--未使用スタイル -->
 <style>
-  .tweet-embed {
+  .-tweet-embed {
     width: 100%;
     max-width: 600px;
     margin: auto;

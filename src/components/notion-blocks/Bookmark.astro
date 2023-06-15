@@ -34,30 +34,32 @@ try {
 
 {
   url && (
-    <div class="bookmark">
-      <a href={url.toString()} target="_blank" rel="noopener noreferrer">
+    <div class="flex-wrap overflow-hidden w-full max-w-full text-lg bg-gray-200 rounded-xl">
+      <a href={url.toString()} target="_blank" rel="noopener noreferrer" class="p-3 w-full flex overflow-hidden">
         <div>
-          <div>{metadata && metadata.title}</div>
-          <div>{metadata && metadata.description}</div>
-          <div>
+          <div class="text-sm font-bold py-1">{metadata && metadata.title}</div>
+          <div class="text-xs font-medium py-1">{metadata && metadata.description}</div>
+          <div class="p-1">
             <div>
               <img
                 src={`https://www.google.com/s2/favicons?domain=${url.hostname}`}
                 alt="title"
                 loading="lazy"
                 decoding="async"
+                class="bg-blue-400 rounded-full "
               />
             </div>
-            <div>{url.origin}</div>
+            <div class="text-xs font-medium underline text-blue-400">{url.origin}</div>
           </div>
         </div>
-        <div>
+        <div class="md:block hidden">
           {metadata && metadata.image && (
             <img
               src={metadata.image}
               alt="title"
               loading="lazy"
               decoding="async"
+              class="object-cover h-full w-[180px] flex-initial top-0 right-0 rounded-xl"
             />
           )}
         </div>
@@ -66,8 +68,10 @@ try {
   )
 }
 
+
+<!--以下未使用スタイルです -->
 <style>
-  .bookmark {
+  .-bookmark {
     display: flex;
     overflow: hidden;
     width: 100%;
@@ -133,7 +137,7 @@ try {
     flex: 1 1 180px;
     position: relative;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .bookmark > a > div:last-child {
       display: none;
     }
