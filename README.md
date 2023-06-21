@@ -1,6 +1,6 @@
 English | [日本語](README.ja.md)
 
-Modified by So TOkumaru
+Modified by So Tokumaru
 
 # astro-notion-blog
 
