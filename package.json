@@ -17,12 +17,13 @@
     "_fetch-notion-blocks": "node scripts/retrieve-block-children.cjs"
   },
   "dependencies": {
+    "@astrojs/image": "^0.17.0",
     "@astrojs/react": "^2.2.0",
     "@astrojs/rss": "^2.4.2",
     "@astrojs/tailwind": "^3.1.3",
     "@notionhq/client": "^2.2.5",
     "@supercharge/promise-pool": "^2.4.0",
-    "astro": "^2.6.3",
+    "astro": "^2.6.6",
     "katex": "^0.16.7",
     "mermaid": "^10.1.0",
     "metascraper": "^5.34.4",
