@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout2.astro';
+import { languages } from '../../i18n/ui';
+
+
+---
+<meta charset="UTF-8">
+
+<ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+  {Object.entries(languages).map(([lang, label]) => (
+    <li>
+      <a href={`/${lang}`} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}</a>
+    </li>
+  ))}
+</ul>
+
+<Layout title="得丸創生">
+	<div slot="header_custom">
+		<link rel="alternate" hreflang="ja" href="https://souto.tk/ja" />
+
+	</div>
+	<div class="">
+		<div class="lang w-full min-h-screen ">
+			<div class="container mx-auto md:pt-56 p-16 pt-56">
+			<!--プロフィール -->
+			
+			<p class="text-base object-center font-bold dark:text-white">とくまる そう</p>
+			<h1 class="text-5xl object-center font-bold dark:text-white">得丸創生</h1>
+			<p class="text-xl my-4 dark:text-white">
+				マレーシアで学ぶ高校生。今はマインクラフトをはじめとした教育、デジタル分野で活動を行っています。
+			</p>
+			<!--役職欄 -->
+			<div class="flex flex-wrap place-content-start flex-col">
+				<a href="https://outstndrs.com/" class="text-black font-bold bg-amber-500 p-3 rounded-xl mb-4 mr-3
+				  border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
+						チーム逸般人 - リーダー
+						<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
+							サイトにアクセス
+							<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+						</span><br>
+						<span class="text-sm font-light">学生で構成されるデジタルクリエイター集団。新しい技術などを学び、生み出します。</span>
+				</a>
+				<a href="https://ideactive.jp/" class="text-black font-bold bg-sky-500 p-3 rounded-xl mb-4 mr-3
+				  border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
+					IDEACTIVE JAPAN PROJECT - アンバサダー
+					<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
+						サイトにアクセス
+						<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+					</span><br>
+					<span class="text-sm font-light">世界を変えるビジネスを創る、ビジネスコンテストを提供。学生アンバサダーとしてマーケティングを担当</span>
+				</a>
+	
+				<a href="https://kids.classmall.jp/" class="text-black font-bold bg-orange-500 p-3 rounded-xl mb-4 mr-3
+				  border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
+					Classmall Kids - 講師
+					<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
+						サイトにアクセス
+						<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+					</span><br>
+					<span class="text-sm font-light">小中学生向けのオンラインプログラミングスクール。「教える」について日々考えています。</span>
+				</a>
+			</div>
+</Layout>

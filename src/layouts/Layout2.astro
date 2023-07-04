@@ -1,0 +1,68 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import { getLangFromUrl } from '../i18n/utils';
+
+import LanguagePicker from '../components/LanguagePicker.astro';
+
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="dark:bg-slate-600 bg-green-500">
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+		type="text/partytown"
+		src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID">
+		</script>
+		<script type="text/partytown">
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+		gtag("config", "G-28S0H2M445");
+		</script>
+
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+		<slot name="header_custom"/> 
+	</head>
+	<body class=" dark:bg-sky-950/50">
+		<language initial="ja" lang="ja,en"></language>
+		<div class="">
+		<slot/>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+
+		<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="soumame" data-description="Support me on Buy me a coffee!" data-message="Buy me a Juice (not coffee)" data-color="#EAB308" data-position="left" data-x_margin="18" data-y_margin="18"></script>
+
+
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 124, 58, 237;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background-color: #F6F6F6;
+	}
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+</style>

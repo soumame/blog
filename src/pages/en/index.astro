@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout2.astro';
+import { languages } from '../../i18n/ui';
+
+---
+<meta charset="UTF-8">
+
+<ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+  {Object.entries(languages).map(([lang, label]) => (
+    <li>
+      <a href={`/${lang}`} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}</a>
+    </li>
+  ))}
+</ul>
+
+<Layout title="So Tokumaru">
+	<div slot="header_custom">
+		<link rel="alternate" hreflang="en" href="https://souto.tk/en" />
+		
+	</div>
+	<div class="">
+		<div class="lang w-full min-h-screen ">
+			<div class="container mx-auto md:pt-56 p-16 pt-56">
+			<!--プロフィール -->
+			<p class="text-base object-center font-bold dark:text-white">得丸創生</p>
+			<h1 class="text-5xl object-center font-bold dark:text-white">So Tokumaru</h1>
+			<p class="text-xl my-4 dark:text-white">
+				High School Student From Tokyo in Malaysia, Working in the educational and digital fields, Love Minecraft
+			</p>
+			<!--役職欄 -->
+			<div class="flex flex-wrap place-content-start flex-col">
+				<a href="https://outstndrs.com/" class="text-black dark:text-white font-bold bg-slate-300 dark:bg-slate-700 outline outline-1 outline-green-500 p-3 rounded-xl mb-4 mr-3 transition ease-in-out shadow-lg hover:shadow-green-800/50 dark:hover:shadow-green-200/50">
+					Team Outstndrs - Leader
+						<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
+							See More
+							<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+						</span><br>
+						<span class="text-sm font-light">Digital-Creator Group by U18 Students</span>
+				</a>
+	
+				<a href="https://ideactive.jp/" class="text-black dark:text-white font-bold bg-slate-300 dark:bg-slate-700 outline outline-1 outline-sky-500 p-3 rounded-xl mb-4 mr-3 transition ease-in-out shadow-lg hover:shadow-green-800/50 dark:hover:shadow-green-200/50">
+					IDEACTIVE JAPAN PROJECT - Student Ambassador
+					<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
+						See More
+						<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+					</span><br>
+					<span class="text-sm font-light">Create business to change the world - Business contest</span>
+				</a>
+	
+				<a href="https://kids.classmall.jp/" class="text-black dark:text-white font-bold bg-slate-300 dark:bg-slate-700 outline outline-1 outline-orange-500 p-3 rounded-xl mb-4 mr-3 transition ease-in-out shadow-lg hover:shadow-green-800/50 dark:hover:shadow-green-200/50">
+					Classmall Kids - Tutor
+					<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
+						See More
+						<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+					</span><br>
+					<span class="text-sm font-light">Programming for Kids!</span>
+				</a>
+			</div>
+
+</Layout>
