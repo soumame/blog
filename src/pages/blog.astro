@@ -35,13 +35,13 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
         <NoContents contents={posts} />
       ) : (
         posts.map((post) => (
-          <div class="{styles.post} bg-gray-200 rounded-xl mt-4 p-4 relative
-          transition ease-in-out hover:drop-shadow-2xl hover:bg-gray-100
+          <div class="relative {styles.post} p-4 m-2 bg-yellow-0 rounded-xl border-black colorChange 
+           border border-b-4 border-r-4 flex flex-col justify-center max-h-80 overflow-hidden absolute
+           hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
           " key={post.Slug}>
             <PostDate post={post} />
             <PostTags post={post} />
             <PostTitle post={post} />
-            <PostFeaturedImage post={post} />
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
           </div>

@@ -35,7 +35,8 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
 </head>
 
-<body  class="colorChange bg-green-0 dark:bg-gray-400 md:p-8 text-black">
+<body class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
+<div class="md:m-4 md:rounded-xl font-mono bg-green-0 dark:bg-gray-400 md:p-8 p-2 text-black">
   <div  class="colorChange
    p-4 m-2 rounded-xl bg-yellow-0  border-black
   border border-b-4 border-r-4
@@ -45,15 +46,12 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
   <!--名前・アイコン・役職・年齢-->
   
     <!--flexボックス -->
-    <div class="flex flex-wrap w-full">
-      <div  class="colorChange flex flex-wrap
-      p-4 m-2 rounded-xl bg-yellow-0  border-black
-      border border-b-4 border-r-4
-      ">
+    <div class="w-full m-2 my-5">
+
       <!--タイトル -->
-      <h1 class="font-serif text-7xl">So Tokumaru</h1>
+      <h1 class="text-black font-mono text-7xl align-bottom">So Tokumaru</h1>
       <!--説明文 -->
-      <h3 class="mt-5 text-xl font-serif">
+      <h3 class="text-black text-xl font-mono align-bottom">
         High School Student From Tokyo in Malaysia,
         <br>
         Working in the educational and digital fields, Love Minecraft
@@ -156,7 +154,7 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 
 <!--sliderボックス() -->
 <div class="p-4 m-2 rounded-xl bg-pink-0  border-black colorChange
-border border-b-4 border-r-4 w-full flex-initial flex justify-center items-center">
+border border-b-4 border-r-4 w-full flex-initial justify-center items-center hidden md:flex">
 <svg xmlns="http://www.w3.org/2000/svg" class="fill-amber-500 h-10 w-10" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
 <!--スライダ本体 -->
 <input id="steps-range" type="range" min="0" max="500" value="0" step="100" class="
@@ -166,13 +164,12 @@ mx-4 w-full h-2 bg-yellow-500 rounded-full appearance-none cursor-pointer dark:b
 
   <!--Blog(notionから読み込む)-->
   <div class="flex h-full w-full mt-4">
-    <div  class="p-4 m-2 rounded-xl bg-purple-0  border-black colorChange
-    border border-b-4 border-r-4 w-full flex-initial">
-    <h1 class="flex justify-center text-5xl font-serif">Blogs</h1>
+    <div  class="p-4 m-2 rounded-xl  border-black">
+    <h1 class="flex justify-center text-5xl font-mono">Blogs</h1>
     </div>
     <div  class="m-2 rounded-xl bg-purple-0  border-black colorChange
     border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 relative">
-      <a href="../blog" class="justify-center font-serif flex">
+      <a href="../blog" class="justify-center font-mono flex">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
       </a>
     </div>
@@ -188,7 +185,7 @@ mx-4 w-full h-2 bg-yellow-500 rounded-full appearance-none cursor-pointer dark:b
         posts.map((post) => (
           <div class="relative {styles.post} p-4 m-2 bg-yellow-0 rounded-xl border-black colorChange 
            border border-b-4 border-r-4 flex flex-col justify-center max-h-80 overflow-hidden absolute
-           hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
+           hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r rotate-2
 
           ">
             <PostDate post={post} />
@@ -206,10 +203,16 @@ mx-4 w-full h-2 bg-yellow-500 rounded-full appearance-none cursor-pointer dark:b
 
   </div>
   <!--詳しい自己紹介、スキル、経歴とか-->
-  <div class="p-4 m-2 rounded-xl bg-cyan-0 border-black colorChange 
-  border border-b-4 border-r-4 w-full h-full mt-4">
-  <h1 class="flex justify-center text-5xl font-serif">About</h1>
+  <div class="flex h-full w-full mt-4">
+    <div  class="p-4 m-2 rounded-xl  border-black">
+    <h1 class="flex justify-center text-5xl font-mono">About</h1>
+    </div>
   </div>
+
+
+
+
+</div>
 
   <script>
     // 要素とボタンを取得

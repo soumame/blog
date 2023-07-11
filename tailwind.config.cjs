@@ -6,10 +6,11 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-			  fancy: ["Lexend Peta"],
-			  serif: ["Noto Serif Japanese"],
-			  mono: ["Noto Sans Mono"],
+			  fancy: ['Lexend Peta 500'],
+			  serif: ['Georgia', 'Cambria', "Times New Roman", 'Times', 'serif'],
+			  mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
 			},
+			
 		  },
 	},
 	plugins: [
