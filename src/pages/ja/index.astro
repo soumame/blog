@@ -1,63 +1,283 @@
 ---
-import Layout from '../../layouts/Layout2.astro';
 import { languages } from '../../i18n/ui';
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../server-constants'
+import {
+  getPosts,
+  getRankedPosts,
+  getAllTags,
+  getNumberOfPages,
+} from '../../lib/notion/client'
+import Layout from '../../layouts/Layout.astro'
+import NoContents from '../../components/NoContents.astro'
+import PostDate from '../../components/PostDate.astro'
+import PostTags from '../../components/PostTags.astro'
+import PostTitle from '../../components/PostTitle.astro'
+import PostFeaturedImage from '../../components/PostFeaturedImage.astro'
+import PostExcerpt from '../../components/PostExcerpt.astro'
+import ReadMoreLink from '../../components/ReadMoreLink.astro'
+import Pagination from '../../components/Pagination.astro'
+import BlogPostsLink from '../../components/BlogPostsLink.astro'
+import BlogTagsLink from '../../components/BlogTagsLink.astro'
+import styles from '../../styles/blog.module.css'
+import Socials from '../../components/Socials.astro';
 
 
+const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
+  getPosts(3),
+  getRankedPosts(),
+  getAllTags(),
+  getNumberOfPages(),
+])
 ---
-<meta charset="UTF-8">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@700&family=Noto+Sans+Mono:wght@500&family=Noto+Serif+JP:wght@300&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+</head>
 
-<ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-  {Object.entries(languages).map(([lang, label]) => (
-    <li>
-      <a href={`/${lang}`} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{label}</a>
-    </li>
-  ))}
-</ul>
+<title> So Tokumaru</title>
 
-<Layout title="得丸創生">
-	<div slot="header_custom">
-		<link rel="alternate" hreflang="ja" href="https://souto.tk/ja" />
+<body class="bg-gradient-to-br from-red-500 from-10% via-blue-500 via-50% to-sky-500 to-90%">
 
-	</div>
-	<div class="">
-		<div class="lang w-full min-h-screen ">
-			<div class="container mx-auto md:pt-56 p-16 pt-56">
-			<!--プロフィール -->
-			
-			<p class="text-base object-center font-bold dark:text-white">とくまる そう</p>
-			<h1 class="text-5xl object-center font-bold dark:text-white">得丸創生</h1>
-			<p class="text-xl my-4 dark:text-white">
-				マレーシアで学ぶ高校生。今はマインクラフトをはじめとした教育、デジタル分野で活動を行っています。
-			</p>
-			<!--役職欄 -->
-			<div class="flex flex-wrap place-content-start flex-col">
-				<a href="https://outstndrs.com/" class="text-black font-bold bg-amber-500 p-3 rounded-xl mb-4 mr-3
-				  border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
-						チーム逸般人 - リーダー
-						<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
-							サイトにアクセス
-							<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-						</span><br>
-						<span class="text-sm font-light">学生で構成されるデジタルクリエイター集団。新しい技術などを学び、生み出します。</span>
-				</a>
-				<a href="https://ideactive.jp/" class="text-black font-bold bg-sky-500 p-3 rounded-xl mb-4 mr-3
-				  border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
-					IDEACTIVE JAPAN PROJECT - アンバサダー
-					<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
-						サイトにアクセス
-						<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-					</span><br>
-					<span class="text-sm font-light">世界を変えるビジネスを創る、ビジネスコンテストを提供。学生アンバサダーとしてマーケティングを担当</span>
-				</a>
-	
-				<a href="https://kids.classmall.jp/" class="text-black font-bold bg-orange-500 p-3 rounded-xl mb-4 mr-3
-				  border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
-					Classmall Kids - 講師
-					<span class="inline-flex items-center font-medium text-blue-600 dark:text-blue-300">
-						サイトにアクセス
-						<svg aria-hidden="true" class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-					</span><br>
-					<span class="text-sm font-light">小中学生向けのオンラインプログラミングスクール。「教える」について日々考えています。</span>
-				</a>
-			</div>
-</Layout>
+  <div class="h-full md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300/50 backdrop-blur-lg md:p-8 p-2 text-black">
+    <!--ヘッダー-->
+    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+      {Object.entries(languages).map(([lang, label]) => (
+        <li>
+          <a href={`/${lang}`} class="flex flex-initial colorChange p-4 m-2 rounded-xl bg-yellow-0 border-black border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">{label}</a>
+        </li>
+      ))}
+    </ul>
+    <!--名前・アイコン・役職・年齢-->
+    
+      <!--flexボックス -->
+    <div class="w-full m-2 my-5">
+        <!--タイトル -->
+        <h1 class="text-black font-mono font-bold text-5xl md:text-7xl align-bottom">あSo Tokumaru</h1>
+        <!--説明文 -->
+        <h3 class="text-black text-xl font-mono align-bottom">
+          High School Student From Tokyo in Malaysia,
+          <br>
+          Working in the educational and digital fields, Love Minecraft
+        </h3>
+    </div>
+    <div class="flex flex-wrap columns-3 w-full">
+      <div  class="colorChange 
+        p-4 m-2 rounded-xl bg-yellow-0  border-black
+        border border-b-4 border-r-4 flex
+        ">
+        language
+      </div>
+      <div  class="colorChange 
+        p-4 m-2 rounded-xl bg-yellow-0  border-black
+        border border-b-4 border-r-4 flex
+        ">
+        language
+      </div>
+      <div  class="colorChange 
+        p-4 m-2 rounded-xl bg-yellow-0  border-black
+        border border-b-4 border-r-4 flex
+        ">
+        language
+      </div>
+    </div>
+    <Socials/>
+  </div>
+
+<div class="md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300/50 md:p-8 p-2 text-black">
+
+<!--カラー調整ボタン＆スライダ -->
+<div class="flex h-full w-full mt-4">
+<!--button -->
+<button id="changeColorIntensity" class="md:m-2 mb-2 rounded-xl bg-pink-0  border-black colorChange
+  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
+   flex p-4 place-items-center">
+   <svg xmlns="http://www.w3.org/2000/svg" class="fill-black h-10 w-10 justify-center items-center" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M234.7 42.7L197 56.8c-3 1.1-5 4-5 7.2s2 6.1 5 7.2l37.7 14.1L248.8 123c1.1 3 4 5 7.2 5s6.1-2 7.2-5l14.1-37.7L315 71.2c3-1.1 5-4 5-7.2s-2-6.1-5-7.2L277.3 42.7 263.2 5c-1.1-3-4-5-7.2-5s-6.1 2-7.2 5L234.7 42.7zM46.1 395.4c-18.7 18.7-18.7 49.1 0 67.9l34.6 34.6c18.7 18.7 49.1 18.7 67.9 0L529.9 116.5c18.7-18.7 18.7-49.1 0-67.9L495.3 14.1c-18.7-18.7-49.1-18.7-67.9 0L46.1 395.4zM484.6 82.6l-105 105-23.3-23.3 105-105 23.3 23.3zM7.5 117.2C3 118.9 0 123.2 0 128s3 9.1 7.5 10.8L64 160l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L128 160l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L128 96 106.8 39.5C105.1 35 100.8 32 96 32s-9.1 3-10.8 7.5L64 96 7.5 117.2zm352 256c-4.5 1.7-7.5 6-7.5 10.8s3 9.1 7.5 10.8L416 416l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L480 416l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L480 352l-21.2-56.5c-1.7-4.5-6-7.5-10.8-7.5s-9.1 3-10.8 7.5L416 352l-56.5 21.2z"/></svg>
+  Color Deco
+  </button>
+
+
+
+<!--sliderボックス() -->
+<div class="p-4 m-2 rounded-xl bg-pink-0  border-black colorChange
+border border-b-4 border-r-4 w-full flex-initial justify-center items-center hidden md:flex">
+<svg xmlns="http://www.w3.org/2000/svg" class="fill-black h-10 w-10" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
+<!--スライダ本体 -->
+<input aria-label="Color Intensity" id="steps-range" type="range" min="0" max="500" value="0" step="100" class="
+mx-4 w-full h-2 bg-yellow-500 rounded-full appearance-none cursor-pointer dark:bg-gray-700">
+</div>
+</div>
+<div class="flex md:justify-center text-5xl font-mono mt-4">Menu</div>
+<div  class="grid md:grid-cols-3 md:gap-4 mt-4">
+  <a href="#" class="font-bold md:ml-2 mb-2 rounded-xl bg-yellow-0  border-black colorChange
+  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
+   flex p-4 place-items-center place-content-between">
+  Blogs
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+</a>
+  <a href="#" class="font-bold mb-2 rounded-xl bg-yellow-0  border-black colorChange
+  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
+   flex p-4 place-items-center place-content-between">
+  About me
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+</a>
+  <a href="#" class="font-bold md:mr-2 mb-2 rounded-xl bg-yellow-0  border-black colorChange
+  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
+   flex p-4 place-items-center place-content-between">
+  Contact
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+</a>
+</div>
+</div>
+</div>
+
+<div class="md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300 md:p-8 p-2 text-black">
+
+
+  <!--Blog(notionから読み込む)-->
+  <div class="flex h-full w-full mt-4">
+    <div  class="p-4 m-2 rounded-xl  border-black">
+    <h1 class="flex justify-center text-5xl font-mono">Blogs</h1>
+    </div>
+    <div  class="m-2 rounded-xl bg-pink-0  border-black colorChange
+    border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 relative">
+      <a href="../blog" aria-label="See more blog posts" class="justify-center font-mono flex">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+      </a>
+    </div>
+  </div>
+  
+  <!--blogカード-->
+  <div  class="grid md:grid-cols-3 md:gap-4">
+
+    {
+      posts.length === 0 ? (
+        <NoContents contents={posts} />
+      ) : (
+        posts.map((post) => (
+          <div class="relative {styles.post} p-4 m-2 bg-yellow-0 rounded-xl border-black colorChange 
+           border border-b-4 border-r-4 flex flex-col justify-center max-h-80 overflow-hidden absolute
+           hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
+          ">
+            <PostDate post={post} />
+            <PostTitle post={post} />
+            <!--<PostFeaturedImage post={post} />-->
+            <PostExcerpt post={post} />
+            <ReadMoreLink post={post} />
+             
+          </div>
+        ))
+      )
+    }
+  </div>
+
+
+</div>
+
+
+  </div>
+  <!--詳しい自己紹介、スキル、経歴とか-->
+  <div class="md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300 md:p-8 p-2 text-black">
+    <div class="flex h-full w-full mt-4">
+      <div  class="p-4 m-2 rounded-xl  border-black">
+      <h1 class="flex justify-center text-5xl font-mono">About me</h1>
+      </div>
+    </div>
+    <div class="h-screen">
+      Hi there! I'm high school student called 'So'(that's my super-short name) who working based on internet. In real world, I am from Tokyo and living in Selangor, Malaysia. Love Minecraft, Design, Team-building.
+    </div>
+
+  </div>
+  
+
+
+
+
+
+
+  <script>
+    // 要素とボタンを取得
+    var elements = document.querySelectorAll(".colorChange");
+    var button = document.getElementById("changeColorIntensity");
+    
+    // ボタンのクリックイベントリスナーを追加
+    button.addEventListener("click", function() {
+      // 各要素に対する操作
+      elements.forEach(element => {
+        // クラスリストを取得
+        var classes = Array.from(element.classList);
+    
+        // 現在の背景色クラスを取得
+        var currentClass = classes.find(cls => cls.startsWith('bg-'));
+    
+        // クラス名から色と強度を取得
+        var colorClassParts = currentClass.split("-");
+        var color = colorClassParts[1];
+        var intensity = colorClassParts[2];
+    
+        // 強度を変更
+        var newIntensity = intensity === "500" ? "0" : "500";
+    
+        // 元のクラスを削除して新しいクラスを追加
+        element.classList.remove(currentClass);
+        element.classList.add(`bg-${color}-${newIntensity}`);
+      });
+    });
+    </script>
+
+
+
+
+
+
+
+
+<script>
+  // 要素とスライダーを取得
+  var elements = document.querySelectorAll(".colorChange");
+  var slider = document.getElementById("steps-range");
+  
+  // スライダーの値が変わったときのイベントリスナーを追加
+  slider.addEventListener("input", function() {
+    // 新しい強度を取得
+    var newIntensity = this.value;
+  
+    // 各要素に対する操作
+    elements.forEach(element => {
+      // クラスリストを取得
+      var classes = Array.from(element.classList);
+  
+      // 現在の背景色クラスを取得
+      var currentClass = classes.find(cls => cls.startsWith('bg-'));
+  
+      // クラス名から色を取得
+      var colorClassParts = currentClass.split("-");
+      var color = colorClassParts[1];
+  
+      // 元のクラスを削除して新しいクラスを追加
+      element.classList.remove(currentClass);
+      element.classList.add(`bg-${color}-${newIntensity}`);
+    });
+  });
+  </script>  
+  
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+</div>
+</body>
+
+<!--
+使用可能な色
+bg-yellow-0
+bg-cyan-0
+bg-purple-0
+
+
+
+
+
+
+ -->
