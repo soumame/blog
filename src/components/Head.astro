@@ -1,0 +1,100 @@
+---
+import Socials from '../components/Socials.astro'
+import { languages } from '../i18n/ui';
+---
+<div class="h-full md:m-4 mt-2 md:rounded-xl bg-gray-300/50 md:p-8 p-2 text-black">
+    <!--ヘッダー-->
+    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 flex mt-3 mb-10" aria-labelledby="dropdownDefaultButton">
+      {Object.entries(languages).map(([lang, label]) => (
+        <li>
+          <a href={`/${lang}`} class="colorChange p-4 px-5 m-2 rounded-xl font-bold text-lg bg-purple border-black border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">{label}</a>
+        </li>
+      ))}
+    </ul>
+    <!--名前・アイコン・役職・年齢-->
+    
+      <!--ぷよぷよ -->
+    <div class="circle md:w-80 md:h-80 w-48 h-48 absolute bg-green z-[-1]"></div>
+    <!--flexボックス -->
+    <div class="w-full m-2 my-5">    
+        <!--タイトル -->
+        <h1 class="text-black font-serif font-bold text-5xl md:text-7xl align-bottom my-3"><slot name="title"/></h1>
+        <!--説明文 -->
+        <slot name="describe"/>
+        <h3 class="text-black text-xl font-mono align-bottom">
+            <slot name="paragraph"/>
+        </h3>
+    </div>
+    <div class="flex flex-wrap columns-3 w-full">
+      <div  class="colorChange 
+        p-4 m-2 rounded-xl bg-blue  border-black
+        border border-b-4 border-r-4 flex
+        ">
+        language
+      </div>
+      <div  class="colorChange 
+        p-4 m-2 rounded-xl bg-blue  border-black
+        border border-b-4 border-r-4 flex
+        ">
+        language
+      </div>
+      <div  class="colorChange 
+        p-4 m-2 rounded-xl bg-blue  border-black
+        border border-b-4 border-r-4 flex
+        ">
+        language
+      </div>
+    </div>
+    <Socials/>
+  </div>
+  <div class="circle md:w-96 md:h-96 w-56 h-56 absolute right-0 z-[-1]"></div>
+
+  <style>
+    .circle{
+      border-radius: 50%;
+      padding-top: 10%;
+    
+      animation-name: puyopuyo;
+      animation-duration: 20.0s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+  }
+  
+  @keyframes puyopuyo{  
+      0%{
+          border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+          transform: translate(0px,0px) scale(1,1) rotate(0deg) skew(0deg,0deg);
+      }
+      14%{
+          border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+      }
+      28%{
+          border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+      }
+      42%{
+          border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
+      }
+      56%{
+          border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+          transform: translate(0px,0px) scale(1.2,1.2) rotate(90deg) skew(0deg,0deg);
+      }
+      70%{
+          border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+      }
+      84%{
+          border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+      }
+      100%{
+          border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+          transform: translate(0px,0px) scale(1,1) rotate(deg) skew(0deg,0deg);
+      }
+  }
+  .animated {
+	-webkit-animation-duration: 20s;
+	animation-duration: 20s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+  </style>

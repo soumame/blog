@@ -12,6 +12,22 @@ module.exports = {
 			},
 			
 		  },
+		colors: {
+			transparent: 'transparent',
+			current: 'currentColor',
+			'green': '#99C691',
+			'blue': '#84a2d4',
+			'purple': '#cc7eb1',
+			'red': '#c9171e',
+			'yellow': '#c89932',
+			'pink': '#e198b4',
+			'tw': '#00acee',
+			'ig': '#dd2a7b',
+			'in': '#0a66c2',
+			'gh': '#171515',
+			'di': '#7289da',
+			
+		  },
 	},
 	plugins: [
 		plugin(function({ addVariant }) {

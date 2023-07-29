@@ -6,6 +6,8 @@ import FeaturedImageDownloader from './src/integrations/featured-image-downloade
 import PublicNotionCopier from './src/integrations/public-notion-copier';
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
+
+
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
     return new URL(BASE_PATH, `https://${CUSTOM_DOMAIN}`).toString();
@@ -27,5 +29,8 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), image()]
+  integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), image()],
+  experimental: {
+    viewTransitions: true,
+  },
 });

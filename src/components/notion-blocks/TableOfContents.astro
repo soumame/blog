@@ -12,7 +12,7 @@ export interface Props {
 const { block, headings } = Astro.props
 ---
 
-<div class="table-of-contents">
+<div class="table-of-contents border-black rounded-xl border border-b-4 border-r-4 p-2 py-4">
   {
     headings.map((headingBlock: interfaces.Block) => {
       const heading =
@@ -30,7 +30,7 @@ const { block, headings } = Astro.props
           href={`#${buildHeadingId(heading)}`}
           class={`table-of-contents ${snakeToKebab(
             block.TableOfContents.Color
-          )} ${indentClass}`}
+          )} ${indentClass}  font-boldç`}
         >
           {heading.RichTexts.map(
             (richText: interfaces.RichText) => richText.PlainText
