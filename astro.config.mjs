@@ -6,8 +6,8 @@ import FeaturedImageDownloader from './src/integrations/featured-image-downloade
 import PublicNotionCopier from './src/integrations/public-notion-copier';
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
-
-
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 const getSite = function () {
   if (CUSTOM_DOMAIN) {
     return new URL(BASE_PATH, `https://${CUSTOM_DOMAIN}`).toString();
@@ -29,8 +29,18 @@ const getSite = function () {
 export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
-  integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), image()],
+  integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), image(), react(), 
+    sitemap({
+    i18n: {
+      defaultLocale: 'ja', // All urls that don't contain `es` or `fr` after `https://stargazers.club/` will be treated as default locale, i.e. `en`
+      locales: {
+        ja: 'ja-JP', // The `defaultLocale` value must present in `locales` keys
+        en: 'en-US',
+      },
+    },
+  })],
   experimental: {
-    viewTransitions: true,
-  },
+    viewTransitions: true
+  }
 });
+

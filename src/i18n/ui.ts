@@ -15,6 +15,10 @@ export const languages = {
       'nav.soto': 'So Tokumaru',
       'nav.blog': 'See Blog',
       'button.close': 'Close',
+      'social.mame': 'こんにちは！ Welcome to our discord by most craziest guys!',
+      'social.mrbean': 'dont worry! its also have English version (bit depopulated)',
+      'footer.contactMe': 'Are you interested me? please contact below!',
+      
     },
     ja: {
       'nav.home': 'ホーム',
@@ -25,6 +29,10 @@ export const languages = {
       'nav.soto': 'So Tokumaru',
       'nav.blog': 'ブログを見る',
       'button.close': '閉じる',
+      'social.mame': '暴れ狂おうぜ~!!ぶっ飛んだ人たちが集まったDiscordサーバーへようこそ!',
+      'social.mrbean': '安心して！英語版もちゃんとあるよ！（ちょっと過疎ってるけど）',
+      'footer.contactMe': '興味がありますか？ぜひご連絡ください！',
+
     },
 
   } as const;

@@ -1,6 +1,7 @@
 ---
 import Socials from '../components/Socials.astro'
 import { languages } from '../i18n/ui';
+const { Title, Sub } = Astro.props;
 ---
 <div class="h-full md:m-4 mt-2 md:rounded-xl bg-gray-300/50 md:p-8 p-2 text-black">
     <!--ヘッダー-->
@@ -18,37 +19,17 @@ import { languages } from '../i18n/ui';
     <!--flexボックス -->
     <div class="w-full m-2 my-5">    
         <!--タイトル -->
-        <h1 class="text-black font-serif font-bold text-5xl md:text-7xl align-bottom my-3"><slot name="title"/></h1>
+        <h1 class="text-black font-mono font-bold text-5xl md:text-7xl align-bottom my-3">{Title}</h1> 
+        <h2 class="text-black font-mono text-xl md:text-3xl align-bottom my-3">{Sub}</h2>
         <!--説明文 -->
         <slot name="describe"/>
-        <h3 class="text-black text-xl font-mono align-bottom">
-            <slot name="paragraph"/>
-        </h3>
-    </div>
-    <div class="flex flex-wrap columns-3 w-full">
-      <div  class="colorChange 
-        p-4 m-2 rounded-xl bg-blue  border-black
-        border border-b-4 border-r-4 flex
-        ">
-        language
-      </div>
-      <div  class="colorChange 
-        p-4 m-2 rounded-xl bg-blue  border-black
-        border border-b-4 border-r-4 flex
-        ">
-        language
-      </div>
-      <div  class="colorChange 
-        p-4 m-2 rounded-xl bg-blue  border-black
-        border border-b-4 border-r-4 flex
-        ">
-        language
-      </div>
-    </div>
-    <Socials/>
-  </div>
-  <div class="circle md:w-96 md:h-96 w-56 h-56 absolute right-0 z-[-1]"></div>
+        <slot name="bio"/>
 
+    </div>
+    <Socials
+    SocialSheet="Datas!C3:F3"
+    />
+  </div>
   <style>
     .circle{
       border-radius: 50%;

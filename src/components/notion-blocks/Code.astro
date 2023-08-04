@@ -30,7 +30,7 @@ const grammer =
   Prism.languages[language.toLowerCase()] || Prism.languages.javascript
 ---
 
-<div class="code">
+<div class="code border border-b-4 border-r-4 border-black rounded-xl p-2">
   <div>
     {
       /* prettier-ignore */
@@ -39,7 +39,7 @@ const grammer =
       ) : (
         <>
           <div>
-            <button class="copy" data-code={code} data-done-text="Copied!">
+            <button class="copy p-1 border" data-code={code} data-done-text="Copied!">
               Copy
             </button>
           </div>

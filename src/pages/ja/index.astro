@@ -1,6 +1,8 @@
 ---
 import { languages } from '../../i18n/ui';
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../server-constants'
+
+
 import {
   getPosts,
   getRankedPosts,
@@ -22,6 +24,8 @@ import styles from '../../styles/blog.module.css'
 import Socials from '../../components/Socials.astro';
 import Head from '../../components/Head.astro';
 import Menu from '../../components/Menu.astro';
+import History from '../../components/History.astro';
+import Footer from '../../components/Footer.astro'
 
 
 const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
@@ -32,6 +36,17 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 ])
 
 import { ViewTransitions } from 'astro:transitions';
+
+// APIからSocialsデータを取得するところ。ピポピポ。
+import {SHEET_API_KEY, SHEET_ID} from '../../server-constants'
+const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Socials!B2:G2/?key=${SHEET_API_KEY}`);
+const data = await response.json();
+const sheetData = data.values;
+
+// APIからbioデータを取得するところ。ピポピポ。
+const response2 = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Bio!B2:C2/?key=${SHEET_API_KEY}`);
+const data2 = await response2.json();
+const sheetData2 = data2.values;
 
 ---
 <head>
@@ -44,22 +59,25 @@ import { ViewTransitions } from 'astro:transitions';
 
 <title> So Tokumaru</title>
 
-<body class="bg-yellow dark:bg-black">
+<body class="bg-gray-200 dark:bg-black">
   <div class="hero">
-    <Head>
-      <p slot="title" class="font-mono">得丸創生</p>
-      <p slot="paragraph">High School Student From Tokyo in Malaysia,<br>
-        Working in the educational and digital fields, Love Minecraft</p>
+    <Head
+    Title="そうまめ"
+    Sub="こんにちは"
+    >
+    {sheetData2.map((item, index) => (
+    <div slot="describe" class="text-black text-xl font-mono align-bottom">{item[0]}</div>
+    ))}
     </Head>
   </div>
 
 <header class="global-nav">
 <Menu
-title1="記事をよむ"
-link1="#blog"
+title1="私について"
+link1=""
 
-title2="私について"
-link2="#"
+title2="記事を読む"
+link2="#blog"
 
 title3="つながる"
 link3="#"
@@ -67,20 +85,32 @@ link3="#"
 </header>
 
 
-<div class="md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300 md:p-8 p-2 text-black">
 
 
-  <!--Blog(notionから読み込む)-->
+<!--経歴とか-->
+<div class="md:m-4 m-2 md:rounded-xl font-mono text-black lg:flex">
+      <div class=" h-full w-full mt-4">
+        <div  class="p-4 my-4 border rounded-lg bg-blue">
+          <h1 class="flex text-4xl md:text-5xl font-mono font-bold ">Career</h1>
+          <p class="flex text-black">こんなこと、あんなことをやっています。</p>
+        </div>
+        <History
+      sheet="History-JA!A2:H100"
+      />
+      </div>
+</div>
+<!--blog -->
+<div class="md:m-4 mt-2 md:rounded-xl font-mono bg-red md:p-8 p-2 text-black border-4">
+
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
-    <h1 class="flex justify-center text-5xl font-mono">Blogs</h1>
+    <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
+    <p class="flex text-black">最新の３件を表示しています</p>
     </div>
-    <div  class="m-2 rounded-xl bg-blue border-black colorChange
-    border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 relative">
-      <a href="../blog" aria-label="See more blog posts" class="justify-center font-mono flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+      <a href="../blog" aria-label="See more blog posts" class="m-2 rounded-xl bg-blue border-black colorChange
+      border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 font-mono flex justify-center items-center ">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 " viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
       </a>
-    </div>
   </div>
   
   <!--blogカード-->
@@ -91,15 +121,17 @@ link3="#"
         <NoContents contents={posts} />
       ) : (
         posts.map((post) => (
-          <div class="relative {styles.post} p-4 m-2 bg-blue rounded-xl border-black colorChange 
-           border border-b-4 border-r-4 flex flex-col justify-center max-h-80 overflow-hidden absolute
+          <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
+           border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
            hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
           ">
+            
             <PostDate post={post} />
             <PostTitle post={post} />
             <!--<PostFeaturedImage post={post} />-->
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
+            <PostTags post={post} />
              
           </div>
         ))
@@ -109,123 +141,6 @@ link3="#"
 
 
 </div>
-
-
-
-<!--詳しい自己紹介、スキル、経歴とか-->
-<div class="md:m-4 mt-2 md:rounded-xl font-mono md:p-8 p-2 text-black">
-    <div class="flex h-full w-full mt-4">
-      <div  class="p-4 m-2 rounded-xl  border-black">
-      <h1 class="flex justify-center text-5xl font-mono">About me</h1>
-      </div>
-    </div>
-    <div class="">
-      Hi there! I'm high school student called 'So'(that's my super-short name) who working based on internet. In real world, I am from Tokyo and living in Selangor, Malaysia. Love Minecraft, Design, Team-building.
-    </div>
-
-</div>
-
-<!--繋がる-->
-<div class="md:m-4 mt-2 md:rounded-xl font-mono bg-gray-500 md:p-8 p-2 text-black">
-
-  <div class="mt-4">
-    <div class="p-4 m-2 rounded-xl border-black">
-    <h1 class="flex justify-center text-5xl font-mono text-white">Connect me</h1>
-    </div>
-  </div>
-
-<div class="flex">
-<div class="flex-col md:w-1/2">
-<!--Twitter -->
-  <div class="bg-tw flex rounded-xl p-4 my-2 relative 
-  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-    <svg
-        xmlns="http://www.w3.org/00/svg"
-        class="h-6 w-6 md:h-10 md:w-10 text-white m-4"
-        fill="currentColor"
-        viewBox="0 0 24 24">
-        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-    </svg>
-    <span class="ml-4 text-white">
-      <h1 class="font-bold text-3xl">Twitter</h1>
-     <p class="">so_to9</p>
-    </span>
-    <a href="https://twitter.com/so_to9" class="w-[100%] h-[100%] absolute top-0 left-0"/>
-  </div>
-<!--Github -->
-  <div class="bg-gh flex rounded-xl p-4 my-2 relative 
-  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-      <svg
-      xmlns="http://www.w3.org/00/svg"
-      class="h-6 w-6 md:h-10 md:w-10 text-white m-4"
-      fill="currentColor"
-      viewBox="0 0 24 24">
-      <path
-        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-    </svg>
-    <span class="ml-4 text-white">
-      <h1 class="font-bold text-3xl">GitHub</h1>
-     <p class="">soumame</p>
-    </span>
-    <a href="https://github.com/soumame" class="w-[100%] h-[100%] absolute top-0 left-0"/>
-  </div>
-<!--Instagram -->
-  <div class="bg-ig flex rounded-xl p-4 my-2 relative 
-  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-      <svg
-      xmlns="http://www.w3.org/00/svg"
-      class="h-6 w-6 md:h-10 md:w-10 text-white m-4"
-      fill="currentColor"
-      viewBox="0 0 24 24">
-      <path
-        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-    </svg>
-    <span class="ml-4 text-white">
-      <h1 class="font-bold text-3xl">Instagram</h1>
-     <p class="">so_toku</p>
-    </span>
-    <a href="https://www.instagram.com/so_toku/" class="w-[100%] h-[100%] absolute top-0 left-0"/>
-  </div>
-<!--Linkedin -->
-  <div class="bg-in flex rounded-xl p-4 my-2 relative 
-  border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-      <svg
-      xmlns="http://www.w3.org/00/svg"
-      class="h-6 w-6 md:h-10 md:w-10 text-white m-4"
-      fill="currentColor"
-      viewBox="0 0 24 24">
-      <path
-        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-    </svg>
-    <span class="ml-4 text-white">
-      <h1 class="font-bold text-3xl">Linkedin</h1>
-     <p class="">So Tokumaru</p>
-    </span>
-    <a href="https://www.linkedin.com/in/so-tokumaru-7a6a0223a/" class="w-[100%] h-[100%] absolute top-0 left-0"/>
-  </div>
-</div>
-
-
-
-<!--Discord -->
-<div class="m-2 rounded-xl bg-gray-600 border border-b-4 border-r-4 w-1/2 p-8">
-  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512" fill="currentColor" class="h-6 w-6 md:h-10 md:w-10 text-white m-4"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg>
-<h1 class="text-4xl text-white mb-4">Discord</h1>
-  <div class="flex-col">
-    <div class="relative w-full bg-di rounded-xl p-4 my-2 border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-      <h1 class="text-3xl text-white font-bold">まめぇ</h1>
-      <p class="text-white">暴れ狂おうぜ！<br>得丸創生が運営する無秩序なサーバーへようこそ。</p>
-      <a href="https://discord.gg/kczgGEKJg2" class="w-[100%] h-[100%] absolute top-0 left-0"/>
-    </div>
-    <div class=" relative w-full bg-di rounded-xl p-4 my-2 border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-      <h1 class="text-3xl text-white font-bold">Mr Bean (english)</h1>
-      <p class="text-white">あのサーバーが英語版でも！<br>ただ結構過疎っています。</p>
-      <a href="https://discord.gg/NPCsuj6D6T" class="w-[100%] h-[100%] absolute top-0 left-0"/>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
+<Footer/>
 
 </body>
