@@ -8,6 +8,7 @@ import {
   getRankedPosts,
   getAllTags,
   getNumberOfPages,
+  getPostsByTag,
 } from '../../lib/notion/client'
 import Layout from '../../layouts/Layout.astro'
 import NoContents from '../../components/NoContents.astro'
@@ -28,11 +29,13 @@ import History from '../../components/History.astro';
 import Footer from '../../components/Footer.astro'
 
 
-const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
+const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all([
   getPosts(3),
   getRankedPosts(),
   getAllTags(),
   getNumberOfPages(),
+  //日本語の記事を取得する
+  getPostsByTag("日本語", 3),
 ])
 
 import { ViewTransitions } from 'astro:transitions';
@@ -55,6 +58,7 @@ const sheetData2 = data2.values;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@700&family=Noto+Sans+Mono:wght@500&family=Noto+Serif+JP:wght@300&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+  <ViewTransitions />
 </head>
 
 <title> So Tokumaru</title>
@@ -105,7 +109,7 @@ link3="#"
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
     <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
-    <p class="flex text-black">最新の３件を表示しています</p>
+    <p class="flex text-black">最新の３件の記事を表示しています</p>
     </div>
       <a href="../blog" aria-label="See more blog posts" class="m-2 rounded-xl bg-blue border-black colorChange
       border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 font-mono flex justify-center items-center ">
@@ -117,10 +121,10 @@ link3="#"
   <div  class="grid md:grid-cols-3 md:gap-4">
 
     {
-      posts.length === 0 ? (
-        <NoContents contents={posts} />
+      PostsbyTag.length === 0 ? (
+        <NoContents contents={PostsbyTag} />
       ) : (
-        posts.map((post) => (
+      PostsbyTag.map((post) => (
           <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
            border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
            hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r

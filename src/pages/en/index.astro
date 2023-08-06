@@ -1,11 +1,14 @@
 ---
 import { languages } from '../../i18n/ui';
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../server-constants'
+
+
 import {
   getPosts,
   getRankedPosts,
   getAllTags,
   getNumberOfPages,
+  getPostsByTag,
 } from '../../lib/notion/client'
 import Layout from '../../layouts/Layout.astro'
 import NoContents from '../../components/NoContents.astro'
@@ -22,16 +25,31 @@ import styles from '../../styles/blog.module.css'
 import Socials from '../../components/Socials.astro';
 import Head from '../../components/Head.astro';
 import Menu from '../../components/Menu.astro';
+import History from '../../components/History.astro';
+import Footer from '../../components/Footer.astro'
 
 
-const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
+const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all([
   getPosts(3),
   getRankedPosts(),
   getAllTags(),
   getNumberOfPages(),
+  //日本語の記事を取得する
+  getPostsByTag("English", 3),
 ])
 
 import { ViewTransitions } from 'astro:transitions';
+
+// APIからSocialsデータを取得するところ。ピポピポ。
+import {SHEET_API_KEY, SHEET_ID} from '../../server-constants'
+const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Socials!B2:G2/?key=${SHEET_API_KEY}`);
+const data = await response.json();
+const sheetData = data.values;
+
+// APIからbioデータを取得するところ。ピポピポ。
+const response2 = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Bio!B2:C2/?key=${SHEET_API_KEY}`);
+const data2 = await response2.json();
+const sheetData2 = data2.values;
 
 ---
 <head>
@@ -40,63 +58,84 @@ import { ViewTransitions } from 'astro:transitions';
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@700&family=Noto+Sans+Mono:wght@500&family=Noto+Serif+JP:wght@300&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+  <ViewTransitions />
 </head>
 
 <title> So Tokumaru</title>
 
-<body class="bg-white dark:bg-black">
+<body class="bg-gray-200 dark:bg-black">
+  <div class="hero">
+    <Head
+    Title="So Tokumaru"
+    Sub="Hi There!"
+    >
+    {sheetData2.map((item, index) => (
+    <div slot="describe" class="text-black text-xl font-mono align-bottom">{item[1]}</div>
+    ))}
+    </Head>
+  </div>
 
-<Head>
-  <p slot="title">So Tokumaru</p>
-  <p slot="paragraph">High School Student From Tokyo in Malaysia,<br>
-    Working in the educational and digital fields, Love Minecraft</p>
-</Head>
+<header class="global-nav">
+<Menu
+title1="Career"
+link1=""
 
-<Menu 
-title1="Blogs"
-link1="#"
+title2="Read blogs"
+link2="#blog"
 
-title2="About mee"
-link2="#"
-
-title3="Contact"
+title3="Connect me"
 link3="#"
 />
+</header>
 
 
-<div class="md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300 md:p-8 p-2 text-black">
 
 
-  <!--Blog(notionから読み込む)-->
-  <div class="flex h-full w-full mt-4">
+<!--経歴とか-->
+<div class="md:m-4 m-2 md:rounded-xl font-mono text-black lg:flex">
+      <div class=" h-full w-full mt-4">
+        <div  class="p-4 my-4 border rounded-lg bg-blue">
+          <h1 class="flex text-4xl md:text-5xl font-mono font-bold ">Career</h1>
+          <p class="flex text-black">This is what I did.</p>
+        </div>
+        <History
+      sheet="History-EN!A2:H100"
+      />
+      </div>
+</div>
+<!--blog -->
+<div class="md:m-4 mt-2 md:rounded-xl font-mono bg-red md:p-8 p-2 text-black border-4">
+
+  <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
-    <h1 class="flex justify-center text-5xl font-mono">Blogs</h1>
+    <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
+    <p class="flex text-black">Showing the latest 3 articles.</p>
     </div>
-    <div  class="m-2 rounded-xl bg-blue-0  border-black colorChange
-    border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 relative">
-      <a href="../blog" aria-label="See more blog posts" class="justify-center font-mono flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+      <a href="../blog" aria-label="See more blog posts" class="m-2 rounded-xl bg-blue border-black colorChange
+      border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 font-mono flex justify-center items-center ">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 " viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
       </a>
-    </div>
   </div>
   
   <!--blogカード-->
   <div  class="grid md:grid-cols-3 md:gap-4">
 
     {
-      posts.length === 0 ? (
-        <NoContents contents={posts} />
+      PostsbyTag.length === 0 ? (
+        <NoContents contents={PostsbyTag} />
       ) : (
-        posts.map((post) => (
-          <div class="relative {styles.post} p-4 m-2 bg-blue rounded-xl border-black colorChange 
-           border border-b-4 border-r-4 flex flex-col justify-center max-h-80 overflow-hidden absolute
+      PostsbyTag.map((post) => (
+          <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
+           border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
            hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
           ">
+            
             <PostDate post={post} />
             <PostTitle post={post} />
             <!--<PostFeaturedImage post={post} />-->
             <PostExcerpt post={post} />
             <ReadMoreLink post={post} />
+            <PostTags post={post} />
              
           </div>
         ))
@@ -106,34 +145,6 @@ link3="#"
 
 
 </div>
+<Footer/>
 
-
-  </div>
-  <!--詳しい自己紹介、スキル、経歴とか-->
-  <div class="md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300 md:p-8 p-2 text-black">
-    <div class="flex h-full w-full mt-4">
-      <div  class="p-4 m-2 rounded-xl  border-black">
-      <h1 class="flex justify-center text-5xl font-mono">About me</h1>
-      </div>
-    </div>
-    <div class="h-screen">
-      Hi there! I'm high school student called 'So'(that's my super-short name) who working based on internet. In real world, I am from Tokyo and living in Selangor, Malaysia. Love Minecraft, Design, Team-building.
-    </div>
-
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
-</div>
 </body>
-
-<!--
-使用可能な色
-bg-blue
-bg-cyan-0
-bg-blue-0
-
-
-
-
-
-
- -->

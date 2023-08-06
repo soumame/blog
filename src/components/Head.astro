@@ -2,6 +2,7 @@
 import Socials from '../components/Socials.astro'
 import { languages } from '../i18n/ui';
 const { Title, Sub } = Astro.props;
+import { ViewTransitions } from 'astro:transitions';
 ---
 <div class="h-full md:m-4 mt-2 md:rounded-xl bg-gray-300/50 md:p-8 p-2 text-black">
     <!--ヘッダー-->
@@ -15,7 +16,7 @@ const { Title, Sub } = Astro.props;
     <!--名前・アイコン・役職・年齢-->
     
       <!--ぷよぷよ -->
-    <div class="circle md:w-80 md:h-80 w-48 h-48 absolute bg-green z-[-1]"></div>
+    <div class="circle md:w-80 md:h-80 w-48 h-48 absolute outline bg-green z-[-1]"></div>
     <!--flexボックス -->
     <div class="w-full m-2 my-5">    
         <!--タイトル -->
@@ -34,6 +35,9 @@ const { Title, Sub } = Astro.props;
     .circle{
       border-radius: 50%;
       padding-top: 10%;
+
+      outline: 1px;
+      outline-offset: 2px;
     
       animation-name: puyopuyo;
       animation-duration: 20.0s;
@@ -45,6 +49,7 @@ const { Title, Sub } = Astro.props;
       0%{
           border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
           transform: translate(0px,0px) scale(1,1) rotate(0deg) skew(0deg,0deg);
+    
       }
       14%{
           border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
@@ -64,6 +69,7 @@ const { Title, Sub } = Astro.props;
       }
       84%{
           border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+          
       }
       100%{
           border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;

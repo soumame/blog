@@ -142,7 +142,7 @@ export async function getPostByPageId(pageId: string): Promise<Post | null> {
 
 export async function getPostsByTag(
   tagName: string,
-  pageSize = 10
+  pageSize = 3
 ): Promise<Post[]> {
   if (!tagName) return []
 
