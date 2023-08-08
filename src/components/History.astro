@@ -8,14 +8,14 @@ const data = await response.json();
 const sheetData = data.values;
 ---
 <meta charset="UTF-8">
-<div class="border-b-4 border-x-4 rounded-b-xl p-4">
+<div class="md:border-b-4 md:border-x-4 md:rounded-b-xl p-4">
 {
     sheetData.map((item, index) => ( // 複数のレスポンスをループで回す！最高かよ　<h2>{index+1}</h2>
     // ここから下がレスポンスの表示の仕方。HTMLと同じように書けるので、わりと簡単にできる。item0,1,2,3,4,5,6,7はそれぞれ、スプレッドシートのA,B,C,D,E,F,G,H列に対応している。
     //0-いつ,1-どこで,2-何を(タイトル),3-どのように(概要),4-リンク,5-色class取得,6-色選択(これは取得してない),7-タグ
-    <div class="flex relative border-red border-l-4 mx-2">
+    <div class="flex relative border-gray-500 border-l-4 mx-2">
         <div class={`absolute flex -left-2.5 mt-5 w-5 h-5 rounded-lg ${item[5]} border`}/>
-        <div class={`relative bg-gray-300 border-2 w-full md:w-1/2 rounded-xl md:rounded-r-none md:rounded-l-xl p-4 my-5 ml-4`} key={index}>
+        <div class={`relative bg-gray-300 border w-full md:w-1/2 rounded-xl p-4 my-5 ml-4  border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r`} key={index}>
             <div class="flex">
                 <time class="text-black text-lg">{item[0]}</time>
                 <p class={`${item[5]} px-3 mx-3 rounded-xl text-black`}>{item[7]}</p>
@@ -25,12 +25,14 @@ const sheetData = data.values;
                     {item[1]}    
                 </p>
             </div>
-            <h1 class="text-2xl font-bold">{item[2]}&nbsp;&rarr;</p>
+            <h1 class="text-2xl font-bold flex">{item[2]}</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" class="py-1 h-6 w-6 fill-blue" height="0.8em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+
             <p class="mt-4 md:mt-0 text-gray-800 md:hidden">{item[3]}</p>
             <a class="absolute top-0 left-0 w-[100%] h-[100%]  
             " href={item[4]}/>   
         </div>
-        <p class="my-5 p-4 hidden md:block w-1/2 border-r-2 border-y-2 rounded-r-xl text-gray-700">{item[3]}</p>
+        <p class="my-5 p-4 hidden md:block w-1/2 border-r-2 border-y-2 rounded-r-xl text-gray-700 bg-gray-300 bg-opacity-60">{item[3]}</p>
 
     </div>
     ))

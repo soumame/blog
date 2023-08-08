@@ -20,7 +20,7 @@ const t = useTranslations(lang);
 {
     sheetData.map((item, index) => (
     sheetData2.map((item2, index2) => (
-    <div class="md:m-4 mt-2 md:rounded-xl font-mono bg-yellow md:p-8 p-2 text-black border-4">
+    <div class="md:m-4 md:rounded-xl font-mono bg-yellow md:p-8 p-2 text-black md:border-4 md:border-x-4">
   
       <div class="mt-4">
         <div class="p-4 m-2 rounded-xl border-black">
@@ -33,7 +33,7 @@ const t = useTranslations(lang);
       <div class="flex-col md:grow grow-0 w-full md:w-fit">
         <!--Twitter -->
         <div class="bg-tw flex rounded-xl p-2 my-2 relative 
-        border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+        border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
           <svg
               xmlns="http://www.w3.org/00/svg"
               class="h-6 w-6 text-white m-4"
@@ -49,7 +49,7 @@ const t = useTranslations(lang);
         </div>
         <!--Github -->
         <div class="bg-gh flex rounded-xl p-2 my-2 relative 
-        border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+        border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
             <svg
             xmlns="http://www.w3.org/00/svg"
             class="h-6 w-6 text-white m-4"
@@ -66,7 +66,7 @@ const t = useTranslations(lang);
         </div>
         <!--Instagram -->
         <div class="bg-ig flex rounded-xl p-2 my-2 relative 
-        border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+        border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
             <svg
             xmlns="http://www.w3.org/00/svg"
             class="h-6 w-6 text-white m-4"
@@ -83,7 +83,7 @@ const t = useTranslations(lang);
         </div>
         <!--Linkedin -->
         <div class="bg-in flex rounded-xl p-2 my-2 relative 
-        border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+        border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
             <svg
             xmlns="http://www.w3.org/00/svg"
             class="h-6 w-6 text-white m-4"
@@ -109,13 +109,13 @@ const t = useTranslations(lang);
           <h1 class="flex text-3xl text-white mb-2 justify-center items-center">Discord</h1>
         </div>
         <div class="flex-col">
-          <div class="relative w-full bg-di rounded-xl p-4 my-2 border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-            <h1 class="text-xl text-white font-bold">まめぇ</h1>
+          <div class="relative w-full bg-di rounded-xl p-4 my-2 border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
+            <h1 class="text-xl text-white font-bold">🇯🇵日本語サーバー</h1>
             <p class="text-white text-sm">{item2[4]}</p>
             <a href={item[4]} class="w-[100%] h-[100%] absolute top-0 left-0"/>
           </div>
-          <div class=" relative w-full bg-di rounded-xl p-4 my-2 border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
-            <h1 class="text-xl text-white font-bold">Mr Bean(english)</h1>
+          <div class=" relative w-full bg-di rounded-xl p-4 my-2 border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">
+            <h1 class="text-xl text-white font-bold">🌍English Server</h1>
             <p class="text-white text-sm">{item2[5]}</p>
             <a href={item[5]} class="w-[100%] h-[100%] absolute top-0 left-0"/>
           </div>

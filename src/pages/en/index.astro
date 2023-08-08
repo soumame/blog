@@ -58,7 +58,6 @@ const sheetData2 = data2.values;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@700&family=Noto+Sans+Mono:wght@500&family=Noto+Serif+JP:wght@300&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
-  <ViewTransitions />
 </head>
 
 <title> So Tokumaru</title>
@@ -112,7 +111,7 @@ link3="#"
     <p class="flex text-black">Showing the latest 3 articles.</p>
     </div>
       <a href="../blog" aria-label="See more blog posts" class="m-2 rounded-xl bg-blue border-black colorChange
-      border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 font-mono flex justify-center items-center ">
+      border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r flex-none p-4 font-mono flex justify-center items-center ">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 " viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
       </a>
   </div>
@@ -127,7 +126,7 @@ link3="#"
       PostsbyTag.map((post) => (
           <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
            border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
-           hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
+           active:border-t-4 active:border-l-4 active:border-b active:border-r
           ">
             
             <PostDate post={post} />
