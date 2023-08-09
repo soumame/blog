@@ -78,12 +78,17 @@ const sheetData2 = data2.values;
   <meta name="twitter:site" content={item[0]} />
   ))}
   <meta name="twitter:image:src" content="/ogp.png" />
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 
 
 
-<body class="bg-gray-200 dark:bg-gray-900">
+<body class="bg-gray-200 dark:bg-black">
   <div class="hero">
     <Head
     Title="そうまめ"
@@ -131,7 +136,7 @@ link3="#connect"
     <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
     <p class="flex text-black">最新の３件の記事を表示しています</p>
     </div>
-      <a href="../blog" aria-label="Find more blog posts" class="m-2 rounded-xl bg-blue border-black 
+      <a href="../blog" aria-label="Find more blog posts" class="m-2 rounded-xl bg-blue border-black colorChange
       border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r flex-none p-4 font-mono flex justify-center items-center ">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 " viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
       </a>
@@ -145,7 +150,7 @@ link3="#connect"
         <NoContents contents={PostsbyTag} />
       ) : (
       PostsbyTag.map((post) => (
-          <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black  
+          <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
            border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
            active:border-t-4 active:border-l-4 active:border-b active:border-r
           ">

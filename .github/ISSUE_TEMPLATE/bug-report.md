@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ""
-labels: ""
-assignees: ""
+title: ''
+labels: ''
+assignees: ''
 ---
 
 ## Describe the bug
@@ -35,8 +35,7 @@ If applicable, add screenshots to help explain your problem.
 
 ## Repository and Branch
 
-If you fork easy-notion-blog, please write your GitHub repository URL and
-branch.
+If you fork easy-notion-blog, please write your GitHub repository URL and branch.
 
 ## Desktop (please complete the following information)
 
