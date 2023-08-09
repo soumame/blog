@@ -45,23 +45,23 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
       <h2>{page}/{numberOfPages}</h2>
     </header>
     <div class="w-full font-bold text-center text-4xl my-4">Blogs</div>
-    <div  class="grid md:grid-cols-3 md:gap-4">
-
+    <div class="grid md:grid-cols-3 md:gap-4">
       {
         posts.length === 0 ? (
           <NoContents contents={posts} />
         ) : (
           posts.map((post) => (
-            <div class="relative {styles.post} p-4 m-2 bg-blue rounded-xl border-black colorChange 
+            <div
+              class="relative {styles.post} p-4 m-2 bg-blue rounded-xl border-black colorChange 
              border border-b-4 border-r-4 flex flex-col
              active:border-t-4 active:border-l-4 active:border-b active:border-r
-            ">
+            "
+            >
               <PostFeaturedImage post={post} />
               <PostDate post={post} />
               <PostTitle post={post} />
               <PostExcerpt post={post} />
               <ReadMoreLink post={post} />
-               
             </div>
           ))
         )

@@ -1,87 +1,105 @@
 ---
 import Socials from '../components/Socials.astro'
-import { languages } from '../i18n/ui';
-const { Title, Sub } = Astro.props;
-import { ViewTransitions } from 'astro:transitions';
+import { languages } from '../i18n/ui'
+const { Title, Sub } = Astro.props
+import { ViewTransitions } from 'astro:transitions'
 ---
-<div class="h-full md:m-4 mt-2 md:rounded-xl bg-gray-300/50 md:p-8 p-2 text-black">
-    <!--ヘッダー-->
-    <ul class="py-2 text-sm text-black dark:text-gray-200 flex mt-3 mb-10" aria-labelledby="dropdownDefaultButton">
-      {Object.entries(languages).map(([lang, label]) => (
+
+<div
+  class="h-full md:m-4 mt-2 md:rounded-xl bg-gray-300/50 md:p-8 p-2 text-black"
+>
+  <!--ヘッダー-->
+  <ul
+    class="py-2 text-sm text-black dark:text-gray-200 flex mt-3 mb-10"
+    aria-labelledby="dropdownDefaultButton"
+  >
+    {
+      Object.entries(languages).map(([lang, label]) => (
         <li>
-          <a href={`/${lang}`} class="colorChange p-4 px-5 m-2 rounded-xl font-bold text-lg bg-purple border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">{label}</a>
+          <a
+            href={`/${lang}`}
+            class="colorChange p-4 px-5 m-2 rounded-xl font-bold text-lg bg-purple border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r"
+          >
+            {label}
+          </a>
         </li>
-      ))}
-    </ul>
-    <!--名前・アイコン・役職・年齢-->
-    
-      <!--ぷよぷよ -->
-    <div class="circle md:w-80 md:h-80 w-48 h-48 absolute md:outline bg-green z-[-1]"></div>
-    <!--flexボックス -->
-    <div class="w-full m-2 my-5">    
-        <!--タイトル -->
-        <h1 class="text-black font-mono font-bold text-5xl md:text-7xl align-bottom my-3">{Title}</h1> 
-        <h2 class="text-black font-mono md:text-3xl text-2xl align-bottom my-3">{Sub}</h2>
-        <!--説明文 -->
-        <slot name="describe"/>
-        <slot name="bio"/>
+      ))
+    }
+  </ul>
+  <!--名前・アイコン・役職・年齢-->
 
-    </div>
-    <Socials
-    SocialSheet="Datas!C3:F3"
-    />
+  <!--ぷよぷよ -->
+  <div
+    class="circle md:w-80 md:h-80 w-48 h-48 absolute md:outline bg-green z-[-1]"
+  >
   </div>
-  <style>
-    .circle{
-      border-radius: 50%;
-      padding-top: 10%;
+  <!--flexボックス -->
+  <div class="w-full m-2 my-5">
+    <!--タイトル -->
+    <h1
+      class="text-black font-mono font-bold text-5xl md:text-7xl align-bottom my-3"
+    >
+      {Title}
+    </h1>
+    <h2 class="text-black font-mono md:text-3xl text-2xl align-bottom my-3">
+      {Sub}
+    </h2>
+    <!--説明文 -->
+    <slot name="describe" />
+    <slot name="bio" />
+  </div>
+  <Socials SocialSheet="Datas!C3:F3" />
+</div>
+<style>
+  .circle {
+    border-radius: 50%;
+    padding-top: 10%;
 
-      outline: 1px;
-      outline-offset: 2px;
-    
-      animation-name: puyopuyo;
-      animation-duration: 20.0s;
-      animation-timing-function: ease;
-      animation-iteration-count: infinite;
+    outline: 1px;
+    outline-offset: 2px;
+
+    animation-name: puyopuyo;
+    animation-duration: 20s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
   }
-  
-  @keyframes puyopuyo{  
-      0%{
-          border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
-          transform: translate(0px,0px) scale(1,1) rotate(0deg) skew(0deg,0deg);
-    
-      }
-      14%{
-          border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
-      }
-      28%{
-          border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
-      }
-      42%{
-          border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
-      }
-      56%{
-          border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
-          transform: translate(0px,0px) scale(1.2,1.2) rotate(90deg) skew(0deg,0deg);
-      }
-      70%{
-          border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
-      }
-      84%{
-          border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
-          
-      }
-      100%{
-          border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
-          transform: translate(0px,0px) scale(1,1) rotate(deg) skew(0deg,0deg);
-      }
+
+  @keyframes puyopuyo {
+    0% {
+      border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+      transform: translate(0px, 0px) scale(1, 1) rotate(0deg) skew(0deg, 0deg);
+    }
+    14% {
+      border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+    }
+    28% {
+      border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+    }
+    42% {
+      border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
+    }
+    56% {
+      border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+      transform: translate(0px, 0px) scale(1.2, 1.2) rotate(90deg)
+        skew(0deg, 0deg);
+    }
+    70% {
+      border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+    }
+    84% {
+      border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+    }
+    100% {
+      border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+      transform: translate(0px, 0px) scale(1, 1) rotate(deg) skew(0deg, 0deg);
+    }
   }
   .animated {
-	-webkit-animation-duration: 20s;
-	animation-duration: 20s;
-	-webkit-animation-fill-mode: both;
-	animation-fill-mode: both;
-	-webkit-animation-iteration-count: infinite;
-	animation-iteration-count: infinite;
-}
-  </style>
+    -webkit-animation-duration: 20s;
+    animation-duration: 20s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+</style>

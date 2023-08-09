@@ -35,10 +35,17 @@ try {
 {
   url && (
     <div class="flex-wrap overflow-hidden w-full max-w-full text-lg bg-gray-200 rounded-xl">
-      <a href={url.toString()} target="_blank" rel="noopener noreferrer" class="p-3 w-full flex overflow-hidden">
+      <a
+        href={url.toString()}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-3 w-full flex overflow-hidden"
+      >
         <div>
           <div class="text-sm font-bold py-1">{metadata && metadata.title}</div>
-          <div class="text-xs font-medium py-1">{metadata && metadata.description}</div>
+          <div class="text-xs font-medium py-1">
+            {metadata && metadata.description}
+          </div>
           <div class="p-1">
             <div>
               <img
@@ -49,7 +56,9 @@ try {
                 class="bg-blue-400 rounded-full "
               />
             </div>
-            <div class="text-xs font-medium underline text-blue-400">{url.origin}</div>
+            <div class="text-xs font-medium underline text-blue-400">
+              {url.origin}
+            </div>
           </div>
         </div>
         <div class="md:block hidden">
@@ -67,7 +76,6 @@ try {
     </div>
   )
 }
-
 
 <!--以下未使用スタイルです -->
 <style>
