@@ -1,106 +1,90 @@
-<!--カラー調整ボタン＆スライダ -->
-<div class="flex h-full w-full mt-4">
-  <!--button -->
-  <button
-    id="changeColorIntensity"
-    class="md:m-2 mb-2 rounded-xl bg-blue-0 border-black colorChange border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r flex p-4 place-items-center"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="fill-black h-10 w-10 justify-center items-center"
-      height="1em"
-      viewBox="0 0 576 512"
-      ><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-      <path
-        d="M234.7 42.7L197 56.8c-3 1.1-5 4-5 7.2s2 6.1 5 7.2l37.7 14.1L248.8 123c1.1 3 4 5 7.2 5s6.1-2 7.2-5l14.1-37.7L315 71.2c3-1.1 5-4 5-7.2s-2-6.1-5-7.2L277.3 42.7 263.2 5c-1.1-3-4-5-7.2-5s-6.1 2-7.2 5L234.7 42.7zM46.1 395.4c-18.7 18.7-18.7 49.1 0 67.9l34.6 34.6c18.7 18.7 49.1 18.7 67.9 0L529.9 116.5c18.7-18.7 18.7-49.1 0-67.9L495.3 14.1c-18.7-18.7-49.1-18.7-67.9 0L46.1 395.4zM484.6 82.6l-105 105-23.3-23.3 105-105 23.3 23.3zM7.5 117.2C3 118.9 0 123.2 0 128s3 9.1 7.5 10.8L64 160l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L128 160l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L128 96 106.8 39.5C105.1 35 100.8 32 96 32s-9.1 3-10.8 7.5L64 96 7.5 117.2zm352 256c-4.5 1.7-7.5 6-7.5 10.8s3 9.1 7.5 10.8L416 416l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L480 416l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L480 352l-21.2-56.5c-1.7-4.5-6-7.5-10.8-7.5s-9.1 3-10.8 7.5L416 352l-56.5 21.2z"
-      ></path></svg
-    >
-    Color Deco
-  </button>
+    <!--カラー調整ボタン＆スライダ -->
+    <div class="flex h-full w-full mt-4">
+        <!--button -->
+        <button id="changeColorIntensity" class="md:m-2 mb-2 rounded-xl bg-blue-0  border-black colorChange
+          border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r
+           flex p-4 place-items-center">
+           <svg xmlns="http://www.w3.org/2000/svg" class="fill-black h-10 w-10 justify-center items-center" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M234.7 42.7L197 56.8c-3 1.1-5 4-5 7.2s2 6.1 5 7.2l37.7 14.1L248.8 123c1.1 3 4 5 7.2 5s6.1-2 7.2-5l14.1-37.7L315 71.2c3-1.1 5-4 5-7.2s-2-6.1-5-7.2L277.3 42.7 263.2 5c-1.1-3-4-5-7.2-5s-6.1 2-7.2 5L234.7 42.7zM46.1 395.4c-18.7 18.7-18.7 49.1 0 67.9l34.6 34.6c18.7 18.7 49.1 18.7 67.9 0L529.9 116.5c18.7-18.7 18.7-49.1 0-67.9L495.3 14.1c-18.7-18.7-49.1-18.7-67.9 0L46.1 395.4zM484.6 82.6l-105 105-23.3-23.3 105-105 23.3 23.3zM7.5 117.2C3 118.9 0 123.2 0 128s3 9.1 7.5 10.8L64 160l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L128 160l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L128 96 106.8 39.5C105.1 35 100.8 32 96 32s-9.1 3-10.8 7.5L64 96 7.5 117.2zm352 256c-4.5 1.7-7.5 6-7.5 10.8s3 9.1 7.5 10.8L416 416l21.2 56.5c1.7 4.5 6 7.5 10.8 7.5s9.1-3 10.8-7.5L480 416l56.5-21.2c4.5-1.7 7.5-6 7.5-10.8s-3-9.1-7.5-10.8L480 352l-21.2-56.5c-1.7-4.5-6-7.5-10.8-7.5s-9.1 3-10.8 7.5L416 352l-56.5 21.2z"/></svg>
+          Color Deco
+          </button>
+        
+        
+        
+        <!--sliderボックス() -->
+          <div class="p-4 m-2 rounded-xl bg-blue-0  border-black colorChange
+          border border-b-4 border-r-4 w-full flex-initial justify-center items-center hidden md:flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="fill-black h-10 w-10" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
+          <!--スライダ本体 -->
+          <input aria-label="Color Intensity" id="steps-range" type="range" min="0" max="500" value="0" step="100" class="
+          mx-4 w-full h-2 bg-yellow-500 rounded-full appearance-none cursor-pointer dark:bg-gray-700">
+          </div>
+    </div>
 
-  <!--sliderボックス() -->
-  <div
-    class="p-4 m-2 rounded-xl bg-blue-0 border-black colorChange border border-b-4 border-r-4 w-full flex-initial justify-center items-center hidden md:flex"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="fill-black h-10 w-10"
-      height="1em"
-      viewBox="0 0 512 512"
-      ><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-      <path
-        d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"
-      ></path></svg
-    >
-    <!--スライダ本体 -->
-    <input
-      aria-label="Color Intensity"
-      id="steps-range"
-      type="range"
-      min="0"
-      max="500"
-      value="0"
-      step="100"
-      class="mx-4 w-full h-2 bg-yellow-500 rounded-full appearance-none cursor-pointer dark:bg-gray-700"
-    />
-  </div>
-</div>
 
-<script>
-  // 要素とボタンを取得
-  var elements = document.querySelectorAll('.colorChange')
-  var button = document.getElementById('changeColorIntensity')
+    <script>
+        // 要素とボタンを取得
+        var elements = document.querySelectorAll(".colorChange");
+        var button = document.getElementById("changeColorIntensity");
+        
+        // ボタンのクリックイベントリスナーを追加
+        button.addEventListener("click", function() {
+          // 各要素に対する操作
+          elements.forEach(element => {
+            // クラスリストを取得
+            var classes = Array.from(element.classList);
+        
+            // 現在の背景色クラスを取得
+            var currentClass = classes.find(cls => cls.startsWith('bg-'));
+        
+            // クラス名から色と強度を取得
+            var colorClassParts = currentClass.split("-");
+            var color = colorClassParts[1];
+            var intensity = colorClassParts[2];
+        
+            // 強度を変更
+            var newIntensity = intensity === "500" ? "0" : "500";
+        
+            // 元のクラスを削除して新しいクラスを追加
+            element.classList.remove(currentClass);
+            element.classList.add(`bg-${color}-${newIntensity}`);
+          });
+        });
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    <script>
+      // 要素とスライダーを取得
+      var elements = document.querySelectorAll(".colorChange");
+      var slider = document.getElementById("steps-range");
+      
+      // スライダーの値が変わったときのイベントリスナーを追加
+      slider.addEventListener("input", function() {
+        // 新しい強度を取得
+        var newIntensity = this.value;
+      
+        // 各要素に対する操作
+        elements.forEach(element => {
+          // クラスリストを取得
+          var classes = Array.from(element.classList);
+      
+          // 現在の背景色クラスを取得
+          var currentClass = classes.find(cls => cls.startsWith('bg-'));
+      
+          // クラス名から色を取得
+          var colorClassParts = currentClass.split("-");
+          var color = colorClassParts[1];
+      
+          // 元のクラスを削除して新しいクラスを追加
+          element.classList.remove(currentClass);
+          element.classList.add(`bg-${color}-${newIntensity}`);
+        });
+      });
+      </script> 
 
-  // ボタンのクリックイベントリスナーを追加
-  button.addEventListener('click', function () {
-    // 各要素に対する操作
-    elements.forEach((element) => {
-      // クラスリストを取得
-      var classes = Array.from(element.classList)
 
-      // 現在の背景色クラスを取得
-      var currentClass = classes.find((cls) => cls.startsWith('bg-'))
-
-      // クラス名から色と強度を取得
-      var colorClassParts = currentClass.split('-')
-      var color = colorClassParts[1]
-      var intensity = colorClassParts[2]
-
-      // 強度を変更
-      var newIntensity = intensity === '500' ? '0' : '500'
-
-      // 元のクラスを削除して新しいクラスを追加
-      element.classList.remove(currentClass)
-      element.classList.add(`bg-${color}-${newIntensity}`)
-    })
-  })
-</script>
-
-<script>
-  // 要素とスライダーを取得
-  var elements = document.querySelectorAll('.colorChange')
-  var slider = document.getElementById('steps-range')
-
-  // スライダーの値が変わったときのイベントリスナーを追加
-  slider.addEventListener('input', function () {
-    // 新しい強度を取得
-    var newIntensity = this.value
-
-    // 各要素に対する操作
-    elements.forEach((element) => {
-      // クラスリストを取得
-      var classes = Array.from(element.classList)
-
-      // 現在の背景色クラスを取得
-      var currentClass = classes.find((cls) => cls.startsWith('bg-'))
-
-      // クラス名から色を取得
-      var colorClassParts = currentClass.split('-')
-      var color = colorClassParts[1]
-
-      // 元のクラスを削除して新しいクラスを追加
-      element.classList.remove(currentClass)
-      element.classList.add(`bg-${color}-${newIntensity}`)
-    })
-  })
-</script>

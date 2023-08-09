@@ -23,29 +23,16 @@ for (let i = startPage; i <= endPage; i++) {
 ---
 
 <div class="pagination mt-4">
-  <a
-    href={getPageLink(1, tag)}
-    class={`border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r ${
-      isFirstPage && 'inactive'
-    }`}>&lt;&lt;</a
-  >
+  <a href={getPageLink(1, tag)} class={`border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r ${isFirstPage && 'inactive'}`}>&lt;&lt;</a>
   {
     pages.map((p: number) => (
-      <a
-        href={getPageLink(p, tag)}
-        class={`border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r ${
-          p === currentPage && 'inactive'
-        }`}
-      >
+      <a href={getPageLink(p, tag)} class={`border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r ${p === currentPage && 'inactive'}`}>
         {p}
       </a>
     ))
   }
-  <a
-    href={getPageLink(numberOfPages, tag)}
-    class={`border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r ${
-      isLastPage && 'inactive'
-    }`}>&gt;&gt;</a
+  <a href={getPageLink(numberOfPages, tag)} class={`border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r ${isLastPage && 'inactive'}`}
+    >&gt;&gt;</a
   >
 </div>
 

@@ -25,20 +25,10 @@ if (block.Image.External) {
         <div>
           {ENABLE_LIGHTBOX ? (
             <a data-fslightbox href={image} data-type="image" class="">
-              <img
-                src={image}
-                alt="image block"
-                class="my-10 border border-b-4 border-r-4 border-black"
-                loading="lazy"
-              />
+              <img src={image} alt="image block" class="my-10 border border-b-4 border-r-4 border-black" loading="lazy"/>
             </a>
           ) : (
-            <img
-              src={image}
-              alt="image block"
-              class="my-10 border border-b-4 border-r-4 border-black"
-              loading="lazy"
-            />
+            <img src={image} alt="image block" class="my-10 border border-b-4 border-r-4 border-black" loading="lazy"/>
           )}
         </div>
         <Caption richTexts={block.Image.Caption} />

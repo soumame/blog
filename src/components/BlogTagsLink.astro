@@ -21,10 +21,7 @@ const { heading, tags } = Astro.props
       <ul class="flex w-full flex-wrap">
         {tags.map((tag: SelectProperty) => (
           <li class="m-0.5">
-            <a
-              href={getTagLink(tag.name)}
-              class={`tag ${tag.color} border whitespace-nowrap`}
-            >
+            <a href={getTagLink(tag.name)} class={`tag ${tag.color} border whitespace-nowrap`}>
               {tag.name}
             </a>
           </li>
@@ -66,4 +63,5 @@ const { heading, tags } = Astro.props
     color: rgb(50, 48, 44);
     background: rgba(227, 226, 224, 0.5);
   }
+  
 </style>
