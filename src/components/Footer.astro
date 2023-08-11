@@ -43,7 +43,7 @@ const t = useTranslations(lang);
           </svg>
           <span class="ml-4 text-white">
             <h1 class="font-bold text-xl">Twitter</h1>
-          <p class="">{item2[0]}</p>
+          <p class="text-white">{item2[0]}</p>
           </span>
           <a href={item[0]} class="w-[100%] h-[100%] absolute top-0 left-0" aria-label="Twitter"/>
         </div>
@@ -60,7 +60,7 @@ const t = useTranslations(lang);
           </svg>
           <span class="ml-4 text-white">
             <h1 class="font-bold text-xl">GitHub</h1>
-          <p class="">{item2[1]}</p>
+          <p class="text-white">{item2[1]}</p>
           </span>
           <a href={item[1]} class="w-[100%] h-[100%] absolute top-0 left-0" aria-label="Github"/>
         </div>
@@ -77,7 +77,7 @@ const t = useTranslations(lang);
           </svg>
           <span class="ml-4 text-white">
             <h1 class="font-bold text-xl">Instagram</h1>
-          <p class="">{item2[2]}</p>
+          <p class="text-white">{item2[2]}</p>
           </span>
           <a href={item[2]} class="w-[100%] h-[100%] absolute top-0 left-0" aria-label="Instagram"/>
         </div>
@@ -94,7 +94,7 @@ const t = useTranslations(lang);
           </svg>
           <span class="ml-4 text-white">
             <h1 class="font-bold text-xl">Linkedin</h1>
-          <p class="">{item2[3]}</p>
+          <p class="text-white">{item2[3]}</p>
           </span>
           <a href={item[3]} class="w-[100%] h-[100%] absolute top-0 left-0" aria-label="Linkedin"/>
         </div>
@@ -123,7 +123,13 @@ const t = useTranslations(lang);
       </div>
     </div>
     <!--フッター-->
-    <p class="">&copy;So Tokumaru</p>
+      <div id="footer" class="flex items-center justify-center">
+        <p class="mx-2">&copy;So Tokumaru</p>
+        <!--Buy Me a coffee-->
+        <a href="">
+        <img class="w-16 h-16" src = "/money.svg" alt="soumame"/>
+        </a>
+      </div>
     </div>
   ))
   ))

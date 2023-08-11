@@ -28,7 +28,7 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 ---
 
 <Layout>
-  <div slot="main" class="{styles.main}">
+  <div slot="main" class="">
     <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
     <BlogTagsLink heading="Categories / カテゴリ" tags={tags} />
     <div  class="grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
@@ -60,8 +60,5 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
     </footer>
   </div>
 
-  <div slot="aside" class={styles.aside}>
-    <BlogPostsLink heading="Recommended / おすすめ" posts={rankedPosts} />
-    <BlogTagsLink heading="Categories / カテゴリ" tags={tags} />
   </div>
 </Layout>

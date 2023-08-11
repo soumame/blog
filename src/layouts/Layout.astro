@@ -5,6 +5,7 @@ import { getNavLink, getStaticFilePath, filePath } from '../lib/blog-helpers.ts'
 import '../styles/syntax-coloring.css'
 import GoogleAnalytics from '../components/GoogleAnalytics.astro'
 import Socials from '../components/Socials.astro'
+import Footer from '../components/Footer.astro'
 
 
 export interface Props {
@@ -74,24 +75,26 @@ import { ViewTransitions } from 'astro:transitions';
       integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
       crossorigin="anonymous"
     />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+
     <ViewTransitions />
   </head>
-  <body>
+  <body class="bg-gray-200">
     <GoogleAnalytics trackingId={'G-ZSQ9BEHZ6R'} />
-    <div class="bg-gray-200">
+    <div class="">
       <main>
         {
           coverImageURL && (
-              <div class="flex md:m-4 mt-2 md:rounded-xl font-mono bg-blue-300 md:p-4 p-2 text-black text-xl md:text-4xl font-bold 
-              border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r
-              ">
-                <a href={getNavLink("/")} class="m-2 p-2 hover:outline active:outline outline-blue-500 rounded-xl">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 md:w-10 md:h-10" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
-                  </a>
-                  <div class="m-4 h-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
-                    </div>
-                <a href={getNavLink('/blog')} class="m-2 p-2 hover:outline active:outline outline-blue-500 rounded-xl">
+              
+              <div class="flex font-mono text-black text-xl md:text-4xl font-bold m-2">
+                <a href={getNavLink("/")} class="m-2 p-2 rounded-xl 
+                ">
+                  <img class="w-10 h-10" src="/favicon.svg"></img>
+                  <p class="text-xs text-center font-bold">Home</p>
+                </a>
+                <a href={getNavLink('/blog')} class="m-2 p-2 rounded-xl flex justify-center items-center 
+                ">
+                
                   {
                     database.Icon && database.Icon.Type === 'emoji' ? (
                       <>
@@ -121,26 +124,10 @@ import { ViewTransitions } from 'astro:transitions';
           )
         }
         <div class="md:m-4 mt-2 md:rounded-xl font-mono md:p-8 p-2">
-        <Socials/>
         </div>
 
-        <div class="content md:m-4 mt-2 md:rounded-xl font-mono bg-gray-300 md:p-8 p-2 text-black">
-          <header>
-          </header>
+        <div class="content md:m-4 mt-4 md:rounded-xl font-mono bg-gray-300 md:p-8 text-black md:border-2 py-8 p-2">
           <slot name="main" />
-
-          <footer>
-            <div>
-              <span>Powered by</span>
-              <a href="https://github.com/otoyo/astro-notion-blog"
-                >astro-notion-blog</a
-              >
-              <span>Change & Created by</span>
-              <a href="https://souto.tk"
-                >So.T</a
-              >
-            </div>
-          </footer>
         </div>
       </main>
     </div>
@@ -151,290 +138,10 @@ import { ViewTransitions } from 'astro:transitions';
       )
     }
   </body>
+  <footer class="">
+    <Footer/>
+    
+  </footer>
 </html>
 
-<style define:vars={{ asidePaddingTop }}>
-  .container {
-    display: flex;
-    min-height: 100vh;
-  }
-  @media (max-width: 768px) {
-    .container {
-      display: block;
-    }
-  }
 
-  main {
-    flex: 1;
-    order: 2;
-    justify-content: space-between;
-  }
-  @media (max-width: 768px) {
-    main {
-      order: 1;
-    }
-  }
-
-  div.cover {
-  }
-  div.cover img {
-    display: block;
-    
-    height: 20vh;
-    object-fit: cover;
-    object-position: center 60%;
-  }
-
-  div.content {
-    padding: 20px 40px;
-  }
-  @media (max-width: 768px) {
-    div.content {
-      padding: 0 18px;
-    }
-  }
-
-  main header {
-    padding: 20px 0 20px;
-  }
-  main header h1 {
-    font-weight: 700;
-    color: #333;
-  }
-  main header h1 a {
-    display: block;
-    color: inherit;
-  }
-  main header h1 a:hover {
-    color: inherit;
-  }
-  main header h1 a span,
-  main header h1 a img {
-    display: inline-block;
-    font-size: 1.1em;
-  }
-  main header h1 a span {
-    margin-right: 0.3em;
-    margin-left: -0.1rem;
-  }
-  main header h1 a img {
-    width: 1.2em;
-    height: 1.2em;
-    margin-right: 0.2em;
-    margin-left: -0.3rem;
-    vertical-align: sub;
-  }
-  main header h1 a img.custom-icon {
-    border-radius: var(--radius);
-  }
-
-  main header div.description {
-    
-    font-size: 0.95rem;
-  }
-
-  main footer {
-    margin: 30px 0 10px;
-    text-align: center;
-    font-size: 0.75rem;
-  }
-  @media (max-width: 768px) {
-    main footer {
-      margin: 0 auto 30px;
-    }
-  }
-  main footer span {
-    color: #777;
-  }
-  main footer a {
-    color: inherit;
-    text-decoration: underline;
-  }
-</style>
-
-<style is:global>
-  :root {
-    --gap-quarter: 0.25rem;
-    --gap-half: 0.5rem;
-    --gap: 1rem;
-    --gap-double: 2rem;
-
-    
-    
-    --accents-1: #666;
-    --accents-2: #666;
-    --accents-3: #666;
-    --geist-foreground: #000;
-    --geist-success: #690;
-
-    --radius: 10px;
-
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
-    --font-mono: SFMono-Regular, Menlo, Consolas, 'PT Mono', 'Liberation Mono',
-      Courier, monospace;
-  }
-
-  * {
-    box-sizing: border-box;
-    word-break: break-word;
-  }
-
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-  }
-
-  body {
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-      Helvetica, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
-      'Hiragino Sans GB', メイリオ, Meiryo, 'Apple Color Emoji', Arial,
-      sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
-
-    /*background-image: radial-gradient(#ddd 1px, transparent 1px),
-      radial-gradient(#ddd 1px, transparent 1px);*/
-    background-position: 0 0, 25px 25px;
-    background-attachment: fixed;
-    background-size: 50px 50px;
-
-    /* Hack */
-    overflow-x: hidden;
-
-    -webkit-font-smoothing: antialiased;
-  }
-
-  figure {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #999;
-    line-height: 1.8rem;
-  }
-
-  a {
-    color: var(--accents-1);
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--accents-1);
-  }
-
-  mark {
-    padding: var(--gap-quarter);
-    border-radius: var(--radius);
-    background: rgba(247, 212, 255, 0.8);
-  }
-
-  h1 {
-    margin: 0;
-    color: var(--fg);
-    font-size: 2rem;
-    font-weight: 700;
-  }
-
-  h2 {
-    margin: 0;
-    color: var(--fg);
-    line-height: 1.3;
-    font-size: 1.2rem;
-    font-weight: normal;
-  }
-  h2 > span.tag {
-    border-radius: 4px;
-    padding: 3px 9px;
-    background: rgba(227, 226, 224, 0.5);
-  }
-
-  h3 {
-    margin: 0;
-    color: var(--fg);
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 1.6rem;
-    }
-
-    h2 {
-      font-size: 1.15rem;
-    }
-
-    h3 {
-      font-size: 1.15rem;
-    }
-  }
-
-  ol {
-    color: #222;
-    font-weight: 400;
-    font-size: 0.9rem;
-    line-height: 1.8rem;
-  }
-  p,
-  ul {
-    color: #222;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.8rem;
-  }
-  ul,
-  ol {
-    margin: 0;
-    padding-inline-start: 1.5rem;
-  }
-  pre {
-    margin: 0;
-    white-space: pre;
-    tab-size: 2;
-  }
-  pre :global(code) {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    margin: 0.3rem 0;
-    background-color: #333;
-  }
-
-  code {
-    font-size: 0.9rem;
-    background: #f1f1f1;
-    color: #eb5757;
-    padding: 0.25rem;
-    border-radius: var(--radius);
-    font-family: var(--font-mono);
-  }
-
-  table {
-    color: #222;
-    border-collapse: collapse;
-  }
-
-  table tr {
-    vertical-align: middle;
-  }
-
-  table th {
-    font-weight: 600;
-    background-color: #f4f4f4;
-  }
-
-  table td,
-  table th {
-    font-size: 0.9rem;
-    border: 1px solid #e4e4e4;
-    padding: 0.5rem 1rem;
-    line-height: 1.2rem;
-  }
-</style>
