@@ -11,16 +11,16 @@ const sheetData = data.values;
 <div id="connect" class="bg-yellow md:rounded-xl md:border-4 md:mt-4 md:p-8 p-2 md:m-4">
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
-    <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
-    <p class="flex text-black">最新の３件の記事を表示しています</p>
+    <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Connect me?</h1>
+    <p class="flex text-black">興味がありますか？ぜひ繋がってください！</p>
     </div>
   </div>
 
   <div class="md:flex">
-    <div class="flex-col flex-wrap font-mono ">
+    <div class="md:flex-row flex-col flex-wrap font-mono ">
     {
         sheetData.map((item, index) => ( 
-          <div class={`${item[5]} m-2 rounded-xl border-black relative flex md:p-4 p-2 
+          <div class={`${item[5]} m-2 rounded-xl border-black relative md:flex md:p-4 p-2 
           border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r`}>
           <svg
             xmlns="http://www.w3.org/00/svg"
