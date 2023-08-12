@@ -35,7 +35,7 @@ const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all(
   getAllTags(),
   getNumberOfPages(),
   //日本語の記事を取得する
-  getPostsByTag("English", 3),
+  getPostsByTag("日本語", 3),
 ])
 
 import { ViewTransitions } from 'astro:transitions';
@@ -54,15 +54,15 @@ const sheetData2 = data2.values;
 //seo関連
 
 ---
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>So Tokumaru</title>
   {sheetData2.map((item, index) => (
-  <meta name="description" content={item[1]} />
-  <meta property="og:description" content={item[1]} />
-  <meta name="twitter:description" content={item[1]} />
+  <meta name="description" content={item[0]} />
+  <meta property="og:description" content={item[0]} />
+  <meta name="twitter:description" content={item[0]} />
   ))}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon-precomposed" href="/soumame.png" />
@@ -72,7 +72,7 @@ const sheetData2 = data2.values;
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/ogp.png" />
   <meta property="og:site_name" content="So Tokumaru" />
-  <meta property="og:locale" content="en_US"  />
+  <meta property="og:locale" content="ja_JP"  />
   <meta name="twitter:card" content="summary_large_image" />
   {sheetData.map((item, index) => (
   <meta name="twitter:site" content={item[0]} />
@@ -85,6 +85,7 @@ const sheetData2 = data2.values;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
 
+
 </head>
 
 
@@ -93,24 +94,24 @@ const sheetData2 = data2.values;
 <body class="bg-gray-200 dark:bg-black">
   <div class="hero">
     <Head
-    Title="So Tokumaru"
-    Sub="Hi There!"
+    Title="得丸創生"
+    Sub="そうまめ"
     >
     {sheetData2.map((item, index) => (
-    <div slot="describe" class="text-black text-xl font-mono align-bottom mr-3">{item[1]}</div>
+    <div slot="describe" class="text-black text-base md:text-xl font-mono align-bottom mr-3">{item[0]}</div>
     ))}
     </Head>
   </div>
 
 <header class="global-nav">
 <Menu
-title1="Careers"
+title1="About me！"
 link1="#history"
 
-title2="Read articles"
+title2="Read blogs"
 link2="#blog"
 
-title3="Connect"
+title3="Connect me!"
 link3="#connect"
 />
 </header>
@@ -123,10 +124,10 @@ link3="#connect"
       <div class="h-full w-full mt-4">
         <div  class="p-4 mt-4 border-t-4 md:border-x-4 md:rounded-t-lg border bg-blue">
           <h1 class="flex text-4xl md:text-5xl font-mono font-bold ">Career</h1>
-          <p class="flex text-black">This is what I did.</p>
+          <p class="flex text-black">This is what I'm doing</p>
         </div>
         <History
-      sheet="History-EN!A2:H100"
+      sheet="History-JA!A2:H100"
       />
       </div>
 </div>
@@ -136,7 +137,7 @@ link3="#connect"
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
     <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
-    <p class="flex text-black">Showing latest 3 posts</p>
+    <p class="flex text-black">Showing latest 3　English articles</p>
     </div>
       <a href="../blog" aria-label="Find more blog posts" class="m-2 rounded-xl bg-blue border-black colorChange
       border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r flex-none p-4 font-mono flex justify-center items-center ">
@@ -169,11 +170,11 @@ link3="#connect"
       )
     }
   </div>
-
-
 </div>
 <div id="connect">
-<Footer/>
+  <Footer
+  Sheet="Socials!B2:G100"
+  />
 </div>
 </body>
 </html>
