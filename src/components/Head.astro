@@ -4,9 +4,9 @@ import { languages } from '../i18n/ui';
 const { Title, Sub } = Astro.props;
 import { ViewTransitions } from 'astro:transitions';
 ---
-<div class="h-full md:m-4 mt-2 md:rounded-xl bg-gray-300/50 md:p-8 p-2 text-white">
+<div class="h-full md:m-4 md:rounded-xl rounded-b-xl bg-gray-300/50 md:p-8 p-2 md:border-4 border-white text-black bg-green">
     <!--ヘッダー-->
-    <ul class="py-2 text-sm text-white dark:text-gray-200 flex mt-3 mb-10" aria-labelledby="dropdownDefaultButton">
+    <ul class="py-2 text-sm text-black dark:text-gray-200 flex mt-3 mb-10" aria-labelledby="dropdownDefaultButton">
       {Object.entries(languages).map(([lang, label]) => (
         <li>
           <a href={`/${lang}`} class="colorChange p-4 px-5 m-2 rounded-xl font-bold text-base md:text-lg bg-purple border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">{label}</a>
@@ -16,12 +16,12 @@ import { ViewTransitions } from 'astro:transitions';
     <!--名前・アイコン・役職・年齢-->
     
       <!--ぷよぷよ -->
-    <div class="circle md:w-80 md:h-80 w-48 h-48 absolute md:outline bg-transparent z-[-1] outline outline-2  outline-offset-2 outline-green"></div>
+    <div class="circle md:w-80 md:h-80 w-48 h-48 absolute md:outline bg-transparent z-[-1] outline outline-2  outline-offset-2 outline-black"></div>
     <!--flexボックス -->
     <div class="w-full m-2 my-5">    
         <!--タイトル -->
-        <h1 class="text-white font-mono font-bold text-5xl md:text-7xl align-bottom my-3">{Title}</h1> 
-        <h2 class="text-white font-mono md:text-3xl text-2xl align-bottom my-3">{Sub}</h2>
+        <h1 class="text-black font-mono font-bold text-5xl md:text-7xl align-bottom my-3">{Title}</h1> 
+        <h2 class="text-black font-mono md:text-3xl text-2xl align-bottom my-3">{Sub}</h2>
         <!--説明文 -->
         <slot name="describe"/>
         <slot name="bio"/>

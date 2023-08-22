@@ -91,14 +91,14 @@ const sheetData2 = data2.values;
 
 
 
-<body class="bg-bg dark:bg-black">
+<body class="bg-black">
   <div class="hero">
     <Head
     Title="得丸創生"
     Sub="そうまめ"
     >
     {sheetData2.map((item, index) => (
-    <div slot="describe" class="text-white text-base md:text-xl font-mono align-bottom mr-3">{item[0]}</div>
+    <div slot="describe" class="text-black text-base md:text-xl font-mono align-bottom mr-3">{item[0]}</div>
     ))}
     </Head>
   </div>
@@ -117,7 +117,7 @@ link3="#footer"
 </header>
 
 <!--blog -->
-<div class="md:m-4 md:rounded-xl font-mono bg-orange md:p-8 p-2 text-white md:border-4 md:border-x-4">
+<div class="md:m-4 md:rounded-xl rounded-t-xl font-mono bg-orange md:p-8 p-2 text-white md:border-4 md:border-x-4">
 
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
@@ -138,7 +138,7 @@ link3="#footer"
         <NoContents contents={PostsbyTag} />
       ) : (
       PostsbyTag.map((post) => (
-          <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
+          <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black text-black colorChange 
            border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
            active:border-t-4 active:border-l-4 active:border-b active:border-r
           ">
@@ -164,8 +164,8 @@ aaaaa
 <!--経歴とか-->
 <div id="history" class="md:m-4 md:rounded-xl font-mono text-white lg:flex bg-gray-300 md:bg-transparent">
       <div class="h-full w-full mt-4">
-        <div  class="p-4 mt-4 md:rounded-t-lg border-4 bg-orange">
-          <h1 class="flex text-4xl md:text-5xl font-mono font-bold ">Career</h1>
+        <div  class="p-4 mt-4 md:rounded-t-lg border-4 border-b-0 bg-blue">
+          <h1 class="flex text-4xl md:text-5xl font-mono font-bold text-white">Career</h1>
           <p class="flex text-white">こんなこと、あんなことをやっています。</p>
         </div>
         <History
