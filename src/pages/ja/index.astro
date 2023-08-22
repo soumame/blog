@@ -91,53 +91,38 @@ const sheetData2 = data2.values;
 
 
 
-<body class="bg-gray-200 dark:bg-black">
+<body class="bg-bg dark:bg-black">
   <div class="hero">
     <Head
     Title="得丸創生"
     Sub="そうまめ"
     >
     {sheetData2.map((item, index) => (
-    <div slot="describe" class="text-black text-base md:text-xl font-mono align-bottom mr-3">{item[0]}</div>
+    <div slot="describe" class="text-white text-base md:text-xl font-mono align-bottom mr-3">{item[0]}</div>
     ))}
     </Head>
   </div>
 
 <header class="global-nav">
 <Menu
-title1="私について"
-link1="#history"
+title1="blog"
+link1="#blog"
 
-title2="記事を読む"
-link2="#blog"
+title2="career"
+link2="#history"
 
-title3="つながる"
-link3="#connect"
+title3="connect"
+link3="#footer"
 />
 </header>
 
-
-
-
-<!--経歴とか-->
-<div id="history" class="md:m-4 md:rounded-xl font-mono text-black lg:flex bg-gray-300 md:bg-transparent">
-      <div class="h-full w-full mt-4">
-        <div  class="p-4 mt-4 border-t-4 md:border-x-4 md:rounded-t-lg border bg-blue">
-          <h1 class="flex text-4xl md:text-5xl font-mono font-bold ">Career</h1>
-          <p class="flex text-black">こんなこと、あんなことをやっています。</p>
-        </div>
-        <History
-      sheet="History-JA!A2:H100"
-      />
-      </div>
-</div>
 <!--blog -->
-<div class="md:m-4 md:rounded-xl font-mono bg-red md:p-8 p-2 text-black md:border-4 md:border-x-4">
+<div class="md:m-4 md:rounded-xl font-mono bg-orange md:p-8 p-2 text-white md:border-4 md:border-x-4">
 
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
     <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
-    <p class="flex text-black">最新の３件の記事を表示しています</p>
+    <p class="flex text-white">最新の３件の記事を表示しています</p>
     </div>
       <a href="../blog" aria-label="Find more blog posts" class="m-2 rounded-xl bg-blue border-black colorChange
       border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r flex-none p-4 font-mono flex justify-center items-center ">
@@ -171,7 +156,25 @@ link3="#connect"
     }
   </div>
 </div>
-<div id="connect">
+<!--私について -->
+aaaaa
+
+
+
+<!--経歴とか-->
+<div id="history" class="md:m-4 md:rounded-xl font-mono text-white lg:flex bg-gray-300 md:bg-transparent">
+      <div class="h-full w-full mt-4">
+        <div  class="p-4 mt-4 md:rounded-t-lg border-4 bg-orange">
+          <h1 class="flex text-4xl md:text-5xl font-mono font-bold ">Career</h1>
+          <p class="flex text-white">こんなこと、あんなことをやっています。</p>
+        </div>
+        <History
+      sheet="History-JA!A2:H100"
+      />
+      </div>
+</div>
+
+<div id="footer">
   <Footer
   Sheet="Socials!B2:G100"
   />
