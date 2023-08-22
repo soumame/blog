@@ -79,7 +79,7 @@ import { ViewTransitions } from 'astro:transitions';
 
     <ViewTransitions />
   </head>
-  <body class="bg-bg">
+  <body class="bg-black">
     <GoogleAnalytics trackingId={'G-ZSQ9BEHZ6R'} />
     <div class="">
       <main>
@@ -126,7 +126,7 @@ import { ViewTransitions } from 'astro:transitions';
         <div class="md:m-4 mt-2 md:rounded-xl font-mono md:p-8 p-2">
         </div>
 
-        <div class="content md:m-4 mt-4 md:rounded-xl font-mono bg-gray-300 md:p-8 text-white md:border-2 py-8 p-2">
+        <div class="content md:m-4 mt-4 md:rounded-xl font-mono bg-gray-300 md:p-8 text-black md:border-2 py-8 p-2">
           <slot name="main" />
         </div>
       </main>
@@ -143,5 +143,12 @@ import { ViewTransitions } from 'astro:transitions';
     
   </footer>
 </html>
+
+<style>
+body{
+  background-image: linear-gradient(0deg, transparent 31px, #9ca3af 32px),linear-gradient(90deg,  transparent 31px, #9ca3af 32px);
+  background-size: 32px 32px;
+} 
+</style>
 
 

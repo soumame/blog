@@ -40,19 +40,17 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
 ---
 
 <Layout title={`Posts ${page}/${numberOfPages}`} path={`/posts/page/${page}`}>
-  <div slot="main" class="{styles.main bg-white">
-    <header>
-      <h2>{page}/{numberOfPages}</h2>
-    </header>
-    <div class="w-full font-bold text-center text-4xl my-4">Blogs</div>
-    <div  class="grid md:grid-cols-3 md:gap-4">
+  <div slot="main" class="">
+    <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
+    <BlogTagsLink heading="Categories / カテゴリ" tags={tags} />
+    <div  class="grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
 
       {
         posts.length === 0 ? (
           <NoContents contents={posts} />
         ) : (
           posts.map((post) => (
-            <div class="relative {styles.post} p-4 m-2 bg-blue rounded-xl border-black colorChange 
+            <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
              border border-b-4 border-r-4 flex flex-col
              active:border-t-4 active:border-l-4 active:border-b active:border-r
             ">
@@ -76,8 +74,5 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
     </footer>
   </div>
 
-  <div slot="aside" class={styles.aside}>
-    <BlogPostsLink heading="Recommended / おすすめ" posts={rankedPosts} />
-    <BlogTagsLink heading="Categories / カテゴリ" tags={tags} />
   </div>
 </Layout>
