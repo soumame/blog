@@ -9,7 +9,7 @@ const data = await response.json();
 const sheetData = data.values;
 ---
 <meta charset="UTF-8">
-<div id="connect" class="bg-black md:rounded-xl md:border-4 md:mt-4 md:p-8 p-2 md:m-4 text-white">
+<div id="connect" class="md:rounded-xl md:border-4 md:mt-4 md:p-8 p-2 md:m-4 text-white bg-black">
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
     <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Footer</h1>
@@ -17,8 +17,8 @@ const sheetData = data.values;
     </div>
   </div>
 
-  <div class="md:flex">
-    <div class="md:flex-row flex-col flex-wrap font-mono ">
+  <div class="md:flex grid md:grid-cols-2 md:gap-4">
+    <div class="md:flex-row flex-col flex-wrap font-mono w-full">
     {
         sheetData.map((item, index) => ( 
           <div class={`${item[5]} m-2 rounded-xl border-white relative md:flex md:p-4 p-2 

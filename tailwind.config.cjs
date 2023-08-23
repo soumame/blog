@@ -27,8 +27,9 @@ module.exports = {
 			'in': '#0a66c2',
 			'gh': '#171515',
 			'di': '#7289da',
-			'white': '#FEF8F4',
-			'black': '#121717',
+			'white': '#FFF6F2',
+			'gray': '#696969',
+			'black': '#121212',
 			
 		  },
 	},
