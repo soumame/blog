@@ -10,7 +10,7 @@ const { block } = Astro.props
 ---
 
 <div class="table">
-  <table>
+  <table class="m-2 rounded-xl">
     <tbody>
       {
         block.Table.Rows.map((tableRow: interfaces.TableRow, j: number) => (
@@ -29,7 +29,7 @@ const { block } = Astro.props
                 )
               }
               return (
-                <td>
+                <td class="text-left border p-2">
                   {cell.RichTexts.map((richText: interfaces.RichText) => (
                     <RichText richText={richText} />
                   ))}
@@ -48,10 +48,8 @@ const { block } = Astro.props
     overflow-x: auto;
   }
   .table table {
-    margin: 0.6rem 0;
   }
   .table th,
   .table td {
-    text-align: left;
   }
 </style>

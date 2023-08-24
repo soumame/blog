@@ -11,47 +11,42 @@ export interface Props {
 const { prevPost, nextPost } = Astro.props
 ---
 
-<div class="post-relative-link">
-  <div>
+<div class="mt-4">
+  <div class="">
     {
       nextPost && (
-        <a href={getPostLink(nextPost.Slug)} class="colored">
-          <div>◀︎ Next</div>
+        <a href={getPostLink(nextPost.Slug)} class="colored block center leading-tight text-base  mt-2 p-2 border rounded-xl hover:bg-container2">
+          <div class="mt-2 p-2 text-lg">◀︎ Next</div>
           <div>{nextPost.Title}</div>
           <PostTags post={nextPost} enableLink={false} />
         </a>
       )
     }
   </div>
-  <div>
+  <div class="">
     {
       prevPost && (
-        <a href={getPostLink(prevPost.Slug)} class="colored">
-          <div>▶︎ Previous</div>
+        <a href={getPostLink(prevPost.Slug)} class="colored block center leading-tight text-base  mt-2 p-2 border rounded-xl hover:bg-container2">
+          <div class="mt-2 p-2 text-lg">▶︎ Previous</div>
           <div>{prevPost.Title}</div>
           <PostTags post={prevPost} enableLink={false} />
         </a>
       )
     }
   </div>
-  <div>
-    <a href={getNavLink('/')} class="text">↑Top</a>
+  <div class="flex">
+    <a href={getNavLink('/')} class="text place-items-center justify-center flex border rounded-xl font-bold hover:bg-container2 p-2 my-2 shrink">↑Top</a>
+    <a href="/blog" class="text place-items-center justify-center flex border rounded-xl hover:bg-container2 p-2 my-2 ml-2 shrink">Go Blog Home</a>
   </div>
 </div>
 
 <style>
   div.post-relative-link {
-    margin-top: 1rem;
   }
   div.post-relative-link > div {
-    display: block;
-    margin-top: 0.6rem;
   }
   div.post-relative-link > div > a {
-    display: block;
-    text-align: center;
-    line-height: 1.2rem;
-    font-size: 0.95rem;
+
   }
   div.post-relative-link > div > a.text {
     margin-top: 1rem;

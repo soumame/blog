@@ -16,7 +16,7 @@ module.exports = {
 			transparent: 'transparent',
 			current: 'currentColor',
 			'green': '#49DF85',
-			'blue': '#495DDF',
+			'blue': '#A7BCF6',
 			'purple': '#BB7FF8',
 			'red': '#ED726D',
 			'yellow': '#F1A256',
@@ -27,9 +27,23 @@ module.exports = {
 			'in': '#0a66c2',
 			'gh': '#171515',
 			'di': '#7289da',
-			'white': '#FFF6F2',
+			'white': '#fbfdf8',
 			'gray': '#696969',
-			'black': '#121212',
+			'black': '#191c1a',
+
+			'primary': '#006d3e',
+			'secondary': '#4f6354',
+			'container': '#96f7b8',
+			'container2': '#d1e8d5',
+			'primary': '#006d3e',
+			'button': '#beeaf7',
+			'surface': '#dce5db',
+			'tertialy': '#3b6470',
+			'outline': '#717971',
+		
+
+
+			
 			
 		  },
 	},

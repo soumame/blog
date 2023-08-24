@@ -12,7 +12,7 @@ export interface Props {
 const { block, headings } = Astro.props
 ---
 
-<div class="table-of-contents border-black rounded-xl border border-b-4 border-r-4 p-2 py-4">
+<div class="table-of-contents border-black rounded-xl border p-2 py-4">
   {
     headings.map((headingBlock: interfaces.Block) => {
       const heading =
@@ -28,9 +28,9 @@ const { block, headings } = Astro.props
       return (
         <a
           href={`#${buildHeadingId(heading)}`}
-          class={`table-of-contents ${snakeToKebab(
+          class={`table-of-contents block p-2 my-2 text-sm underline rounded-full text-primary hover:bg-container2 active:bg-container hover:outline ${snakeToKebab(
             block.TableOfContents.Color
-          )} ${indentClass}  font-boldç`}
+          )} ${indentClass} `}
         >
           {heading.RichTexts.map(
             (richText: interfaces.RichText) => richText.PlainText
@@ -43,16 +43,12 @@ const { block, headings } = Astro.props
 
 <style>
   .table-of-contents {
+
   }
   .table-of-contents > a {
-    display: block;
-    line-height: 1.8rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: underline;
+
   }
   .table-of-contents > a:hover {
-    background: rgba(241, 241, 239, 1) !important;
   }
   .table-of-contents > a.indent-1 {
     padding-left: 1.5rem;

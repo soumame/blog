@@ -120,7 +120,7 @@ link3="#connect"
 
 
 <!--経歴とか-->
-<div id="history" class="md:m-4 md:rounded-xl font-mono text-black lg:flex bg-gray-300 md:bg-transparent">
+<div id="history" class="md:m-4 md:rounded-xl font-mono text-black lg:flex bg-surface md:bg-transparent">
       <div class="h-full w-full mt-4">
         <div  class="p-4 mt-4 border-t-4 md:border-x-4 md:rounded-t-lg border bg-blue">
           <h1 class="flex text-4xl md:text-5xl font-mono font-bold">Career</h1>
@@ -153,7 +153,7 @@ link3="#connect"
         <NoContents contents={PostsbyTag} />
       ) : (
       PostsbyTag.map((post) => (
-          <div class="relative {styles.post} p-4 m-2 bg-gray-300 rounded-xl border-black colorChange 
+          <div class="relative {styles.post} p-4 m-2 bg-surface rounded-xl border-black colorChange 
            border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
            active:border-t-4 active:border-l-4 active:border-b active:border-r
           ">
