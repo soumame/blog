@@ -30,20 +30,20 @@ const grammer =
   Prism.languages[language.toLowerCase()] || Prism.languages.javascript
 ---
 
-<div class="code border border-b-4 border-r-4 border-black rounded-xl p-2">
-  <div>
+<div class="code block w-full border-black">
+  <div class="bg-white rounded-xl border-4">
     {
       /* prettier-ignore */
       language === 'mermaid' ? (
         <pre class="mermaid">{code}</pre>
       ) : (
         <>
-          <div>
-            <button class="copy p-1 border" data-code={code} data-done-text="Copied!">
+          <div class="flex justify-end">
+            <button class="copy block rounded-xl bg-button leading-none p-2 px-4 m-2 cursor-pointer border border-black" data-code={code} data-done-text="Copied!">
               Copy
             </button>
           </div>
-          <pre><code set:html={Prism.highlight(code, grammer, language)} /></pre>
+          <pre class="pt-2 px-6 pb-6 block overflow-auto text-base leading-none whitespace-pre-wrap"><code class="bg-white p-0" set:html={Prism.highlight(code, grammer, language)} /></pre>
         </>
       )
     }
@@ -76,42 +76,21 @@ const grammer =
 
 <style>
   .code {
-    display: block;
-    width: 100%;
+
   }
   .code > div {
-    background: rgb(247, 246, 243);
-    border-radius: var(--radius);
+
   }
   .code > div div {
-    display: flex;
-    justify-content: flex-end;
+
   }
   .code button.copy {
-    display: block;
-    width: 4rem;
-    border: 0;
-    border-radius: var(--radius);
-    background-color: rgba(227, 226, 224, 0.5);
-    color: var(--fg);
-    line-height: 1.2rem;
-    cursor: pointer;
   }
   .code pre {
-    display: block;
-    overflow: auto;
-    padding: 0.8rem 2rem 2rem;
-    font-size: 0.9rem;
-    line-height: 1.2rem;
-    white-space: pre-wrap;
   }
   .code pre.mermaid {
     padding: 2rem;
   }
   .code pre code {
-    color: var(--fg);
-    padding: 0;
-    background: rgb(247, 246, 243) !important;
-    border-radius: 0;
   }
 </style>

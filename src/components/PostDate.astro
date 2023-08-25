@@ -9,7 +9,7 @@ export interface Props {
 const { post } = Astro.props
 ---
 
-<div class="post-date">
+<div class="post-date text-secondary">
   {post.Date ? getDateStr(post.Date) : ''}
 </div>
 
