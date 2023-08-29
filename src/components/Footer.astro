@@ -14,6 +14,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 <meta charset="UTF-8">
+<head>
+  <script src="https://kit.fontawesome.com/e09742380f.js" crossorigin="anonymous"></script>
+</head>
+
 <div id="footer" class="md:rounded-xl md:border-4 md:mt-4 md:p-8 p-2 md:m-4 text-white bg-outline">
   <div class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
@@ -28,13 +32,8 @@ const t = useTranslations(lang);
         sheetData.map((item, index) => ( 
           <div class={`${item[5]} m-2 rounded-xl border-black relative md:flex md:p-4 p-2 bg-button  
           border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r`}>
-          <svg
-            xmlns="http://www.w3.org/00/svg"
-            class="h-6 w-6 md:h-10 md:w-10 text-tertialy m-2 mr-4 fill-tertialy"
-            fill="white"
-            viewBox="0 0 24 24">
-            <path d={item[1]} />
-          </svg>
+
+          <i class={`h-6 w-6 md:h-10 md:w-10 text-tertialy m-2 mr-4 fill-tertialy fa-solid ${item[1]}`}></i>
             <div>
               <h1 class="text-xl md:text-2xl text-tertialy font-bold">{item[3]}</h1>
               <h2 class="text-base md:text-xl text-tertialy">{item[4]}</h2>
@@ -46,32 +45,33 @@ const t = useTranslations(lang);
     }
     </div>
     <!--サイトマップ -->
-    <div class="border border-b-4 border-r-4 border-black bg-surface text-secondary font-bold rounded-xl md:p-4 p-2 m-2 grow md:w-1/2">
-      <h1 class="text-4xl md:text-5xl justify-center items-center flex">souto.tk</h1>
+    <div class="flex flex-grow justify-center items-center">
+    <div class="border-2 border-black bg-surface text-secondary font-bold rounded-xl md:p-4 p-2 m-2 grow md:w-1/2">
+      <h1 class="text-xl md:text-2xl justify-center md:justify-start md:items-start items-center flex">souto.tk</h1>
 
       <div class="border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r 
-      text-base md:text-xl text-primary bg-container relative rounded-xl md:p-3 p-2 m-2">
+      text-base md:text-xl text-primary bg-container relative rounded-xl md:p-2 pl-3 p-1 m-2">
         <h1 class="text-xl md:text-2xl font-bold">Home</h1>
         <a href={`/${lang}/`} class="absolute right-0 bottom-0 w-full h-full"/>
       </div>
       <div class="border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r 
-      text-base md:text-xl text-secondary bg-container2 relative rounded-xl md:p-3 p-2 m-2 ml-6">
+      text-base md:text-xl text-secondary bg-container2 relative rounded-full md:p-2 pl-3 p-1 m-2 ml-6">
         <h1 class="text-xl md:text-xl">About</h1>
         <a href={`/${lang}/#about`} class="absolute right-0 bottom-0 w-full h-full"/>
       </div>
       <div class="border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r 
-      text-base md:text-xl text-secondary bg-container2 relative rounded-xl md:p-3 p-2 m-2 ml-6">
+      text-base md:text-xl text-secondary bg-container2 relative rounded-full md:p-2 pl-3 p-1 m-2 ml-6">
         <h1 class="text-xl md:text-xl">Career</h1>
         <a href={`/${lang}/#history`} class="absolute right-0 bottom-0 w-full h-full"/>
       </div>
       <div class="border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r 
-      text-base md:text-xl text-secondary bg-container2 relative rounded-xl md:p-3 p-2 m-2 ml-6">
+      text-base md:text-xl text-secondary bg-container2 relative rounded-full md:p-2 pl-3 p-1 m-2 ml-6">
         <h1 class="text-xl md:text-xl">connect</h1>
         <a href={`/${lang}/#footer`} class="absolute right-0 bottom-0 w-full h-full"/>
       </div>
 
       <div class="border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r 
-      text-base md:text-xl text-primary bg-container relative rounded-xl md:p-3 p-2 m-2">
+      text-base md:text-xl text-primary bg-container relative rounded-xl md:p-2 pl-3 p-2 m-2">
         <h1 class="text-xl md:text-2xl font-bold">Blog</h1>
         <a href="/blog" class="absolute right-0 bottom-0 w-full h-full"/>
       </div>
@@ -79,4 +79,10 @@ const t = useTranslations(lang);
       
     </div>
   </div>
+  </div>
+  <div class="flex justify-center items-center mt-2">
+    &copy;So Tokumaru
+    <img src="/zzz.svg" alt="Astro Logo" class="h-24 w-24 ml-2" />
+  </div>
+
 </div>

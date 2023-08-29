@@ -1,11 +1,56 @@
 ---
+import {SHEET_API_KEY, SHEET_ID} from '../server-constants'
+const { sheet } = Astro.props;
 
+// APIからデータを取得するところ。ピポピポ。
+const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${sheet}/?key=${SHEET_API_KEY}`);
+const data = await response.json();
+const sheetData = data.values;
 ---
-<div class="grid md:grid-cols-2 md:gap-4">
-    <div class="rounded-xl border-4 p-2 md:p-4 m-2 bg-secondary text-surface">
-        <h1 class="text-5xl">そうまめ</h1>
+{
+    sheetData.map((item, index) => (
+<div class="p-2 m-2">
+    <div class="sm:flex justify-center items-center">
+        <img src="/question.svg" class="sm:hidden h-20 w-20 ml-2 mt-2" />
+        <h1 class="text-3xl md:4xl py-4">{item[0]}</h1>
+        <img src="/question.svg" class="sm:block hidden h-32 w-32 ml-2 mt-2" />
     </div>
-    <div class="rounded-xl border-4 p-2 md:p-4 m-2 bg-tertialy text-surface">
-        <h1 class="text-5xl">得丸創生</h1>
+
+
+    <p class="text-base py-4">{item[1]}</p>
+
+
+    <!--情報 -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div class="bg-secondary flex justify-center items-center border-outline border-4 rounded-3xl p-4 text-surface">
+            <div class="">
+                <p class="text-base text-gray-300">Age</p>
+                <h2 class="bold md:text-xl text-lg">{item[2]}</h2>
+            </div>
+        </div>
+
+        <div class="bg-secondary flex justify-center items-center border-outline border-4 rounded-3xl p-4 text-surface">
+            <div class="">
+                <p class="text-base text-gray-300">Where</p>
+                <h2 class="bold md:text-xl text-lg">{item[3]}</h2>
+            </div>
+        </div>
+
+        <div class="bg-secondary flex justify-center items-center border-outline border-4 rounded-3xl p-4 text-surface">
+            <div class="">
+                <p class="text-base text-gray-300">What</p>
+                <h2 class="bold md:text-xl text-lg">{item[4]}</h2>
+            </div>
+        </div>
+
+        <div class="bg-secondary flex justify-center items-center border-outline border-4 rounded-3xl p-4 text-surface">
+            <div class="">
+                <p class="text-base text-gray-300">How</p>
+                <h2 class="bold md:text-xl text-lg">{item[5]}</h2>
+            </div>
+        </div>
     </div>
+
 </div>
+))
+}

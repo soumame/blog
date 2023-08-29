@@ -60,7 +60,7 @@ const sheetData2 = data2.values;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>So Tokumaru</title>
+  <title>得丸創生</title>
   {sheetData2.map((item, index) => (
   <meta name="description" content={item[0]} />
   <meta property="og:description" content={item[0]} />
@@ -96,8 +96,8 @@ const sheetData2 = data2.values;
 <body class="bg-white">
   <div class="hero">
     <Head
-    Title="プライマリーカラーは"
-    Sub="#006d3e"
+    Title="得丸創生"
+    Sub="そうまめ"
     >
     {sheetData2.map((item, index) => (
     <div slot="describe" class="text-secondary text-base md:text-xl font-mono align-bottom mr-3">{item[0]}</div>
@@ -110,7 +110,7 @@ const sheetData2 = data2.values;
 title1="blog"
 link1="#blog"
 
-title2="career"
+title2="about"
 link2="#history"
 
 title3="connect"
@@ -119,6 +119,7 @@ link3="#footer"
 </header>
 
 <!--blog -->
+<!--プライマリーカラーは#006d3e -->
 <div class="md:m-4 md:rounded-xl font-mono bg-container2 md:p-8 p-2 text-black md:border-4 md:border-x-4">
 
   <div id="blog" class="flex h-full w-full mt-4">
@@ -165,11 +166,11 @@ link3="#footer"
       <h1 class="flex text-4xl md:text-5xl font-mono font-bold text-black">Who am I</h1>
       <p class="flex text-black">ねえねえ、君について教えてよ？</p>
     </div>  
-  <About/>
+  <About
+  sheet="About!A2:F2"
+  />
   </div>
 </div>
-
-
 
 
 <!--経歴とか-->

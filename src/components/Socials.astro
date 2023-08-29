@@ -8,7 +8,7 @@ const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SH
 const data = await response.json();
 const sheetData = data.values;
 ---
-
+<script src="https://kit.fontawesome.com/e09742380f.js" crossorigin="anonymous"></script>
 <div class="flex flex-wrap mt-4">
 {
     sheetData.map((item, index) => ( 
@@ -16,13 +16,7 @@ const sheetData = data.values;
       border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r
       font-medium leading-normal flex flex-intial space-x-2 text-2xl align-bottom
       ">
-      <svg
-        xmlns="http://www.w3.org/00/svg"
-        class="h-6 w-6 md:h-10 md:w-10 fill-tertialy"
-        fill="white"
-        viewBox="0 0 24 24">
-        <path d={item[1]} />
-      </svg>
+      <i class={`w-6 h-6 md:w-10 md:h-10 fill-tertialy fa-solid ${item[1]}`}></i>
       </a>
     ))
 }
