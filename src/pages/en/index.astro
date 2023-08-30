@@ -80,9 +80,9 @@ const sheetData2 = data2.values;
   <link rel=alternate href={`${siteURL}/`} hreflang="x-default" />  
 
   {sheetData2.map((item, index) => (
-  <meta name="description" content={item[0]} />
-  <meta property="og:description" content={item[0]} />
-  <meta name="twitter:description" content={item[0]} />
+  <meta name="description" content={item[1]} />
+  <meta property="og:description" content={item[1]} />
+  <meta name="twitter:description" content={item[1]} />
   ))}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon-precomposed" href="/soumame.png" />
