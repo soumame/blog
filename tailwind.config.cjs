@@ -4,11 +4,12 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+
 		extend: {
 			fontFamily: {
 			  fancy: ['Lexend Peta 500'],
 			  serif: ['Georgia', 'Cambria', "Times New Roman", 'Times', 'serif'],
-			  mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+			  mono: ['Yu Gothic 300','ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace', ],
 			},
 			
 		  },
