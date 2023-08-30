@@ -9,7 +9,7 @@ export interface Props {
 const { post } = Astro.props
 ---
 
-  <a class="read-more-link absolute top-0 left-0 w-[100%] h-[100%]" href={getPostLink(post.Slug)}></a>
+  <a class="read-more-link absolute top-0 left-0 w-[100%] h-[100%]" href={getPostLink(post.Slug)} aria-label="Read more link"></a>
 
 <style>
   .read-more-link {

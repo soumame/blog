@@ -41,15 +41,17 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
 <Layout title={`Posts in ${tag}`} path={`/posts/tag/${tag}`}>
   <div slot="main" class={styles.main}>
     <header>
-      <h2><span class={`tag ${currentTag.color}`}>{tag}</span></h2>
+      <h2 class=""><span class={`tag text-4xl md:text-5xl p-4 rounded-full border ${currentTag.color}`}>{tag}</span></h2>
     </header>
-
+    <div  class="grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
     {
       posts.length === 0 ? (
         <NoContents contents={posts} />
       ) : (
         posts.map((post) => (
-          <div class={styles.post} key={post.Slug}>
+          <div class="relative p-4 m-2 bg-surface rounded-xl border-black colorChange 
+             border border-b-4 border-r-4 flex flex-col
+             active:border-t-4 active:border-l-4 active:border-b active:border-r" key={post.Slug}>
             <PostDate post={post} />
             <PostTags post={post} />
             <PostTitle post={post} />
@@ -60,6 +62,7 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
         ))
       )
     }
+    </div>
 
     <footer>
       <Pagination tag={tag} currentPage={1} numberOfPages={numberOfPages} />

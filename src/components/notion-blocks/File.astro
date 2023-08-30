@@ -20,15 +20,16 @@ const filename = url.pathname.split('/').slice(-1)[0]
 ---
 
 <div class="file">
-  <div>
+  <div class="">
     {
       url && (
         <a
           href={block.File.External ? url.String() : filePath(url)}
           target="_blank"
           rel="noopener noreferrer"
+          class="border hover:bg-container2 rounded-xl relative block p-2 font-semibold leading-loose"
         >
-          <img src="https://www.notion.so/icons/document_gray.svg" /> {filename}
+          <img src="https://www.notion.so/icons/document_gray.svg" class="w-6 h-6 align-sub" /> {filename}
         </a>
       )
     }
@@ -41,20 +42,12 @@ const filename = url.pathname.split('/').slice(-1)[0]
   }
 
   .file a {
-    display: block;
-    padding: 0.5rem 0.2rem 0.4rem;
-    border-radius: 10px;
-    color: var(--fg);
-    font-weight: 500;
-    line-height: 1.4rem;
+
   }
   .file a:hover {
-    background-color: #eee;
   }
 
   .file a img {
-    width: 1.3rem;
-    height: 1.3rem;
-    vertical-align: sub;
+
   }
 </style>

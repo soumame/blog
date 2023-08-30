@@ -1,0 +1,201 @@
+---
+import { languages } from '../../i18n/ui';
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../server-constants'
+
+
+import {
+  getPosts,
+  getRankedPosts,
+  getAllTags,
+  getNumberOfPages,
+  getPostsByTag,
+} from '../../lib/notion/client'
+import Layout from '../../layouts/Layout.astro'
+import NoContents from '../../components/NoContents.astro'
+import PostDate from '../../components/PostDate.astro'
+import PostTags from '../../components/PostTags.astro'
+import PostTitle from '../../components/PostTitle.astro'
+import PostFeaturedImage from '../../components/PostFeaturedImage.astro'
+import PostExcerpt from '../../components/PostExcerpt.astro'
+import ReadMoreLink from '../../components/ReadMoreLink.astro'
+import Pagination from '../../components/Pagination.astro'
+import BlogPostsLink from '../../components/BlogPostsLink.astro'
+import BlogTagsLink from '../../components/BlogTagsLink.astro'
+import styles from '../../styles/blog.module.css'
+import Socials from '../../components/Socials.astro';
+import Head from '../../components/Head.astro';
+import Menu from '../../components/Menu.astro';
+import History from '../../components/History.astro';
+import Footer from '../../components/Footer.astro'
+import About from '../../components/About.astro'
+
+
+
+const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all([
+  getPosts(3),
+  getRankedPosts(),
+  getAllTags(),
+  getNumberOfPages(),
+  //日本語の記事を取得する
+  getPostsByTag("English", 3),
+])
+
+import { ViewTransitions } from 'astro:transitions';
+
+// APIからSNSのユーザーID取得するところ。ピポピポ。
+import {SHEET_API_KEY, SHEET_ID} from '../../server-constants'
+const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Socials!B3:G3/?key=${SHEET_API_KEY}`);
+const data = await response.json();
+const sheetData = data.values;
+
+// APIからbioデータを取得するところ。ピポピポ。
+const response2 = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Bio!B2:C2/?key=${SHEET_API_KEY}`);
+const data2 = await response2.json();
+const sheetData2 = data2.values;
+
+//seo関連
+
+---
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>So Tokumaru</title>
+  {sheetData2.map((item, index) => (
+  <meta name="description" content={item[0]} />
+  <meta property="og:description" content={item[0]} />
+  <meta name="twitter:description" content={item[0]} />
+  ))}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon-precomposed" href="/soumame.png" />
+
+  <meta property="og:url" content="https://souto.tk" />
+  <meta property="og:title" content="So Tokumaru" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/ogp.png" />
+  <meta property="og:site_name" content="So Tokumaru" />
+  <meta property="og:locale" content="ja_JP"  />
+  <meta name="twitter:card" content="summary_large_image" />
+  {sheetData.map((item, index) => (
+  <meta name="twitter:site" content={item[0]} />
+  ))}
+  <meta name="twitter:image:src" content="/ogp.png" />
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
+
+
+</head>
+
+
+
+
+<body class="bg-white">
+  <div class="hero">
+    <Head
+    Title="So Tokumaru"
+    Sub="Mr.Bean"
+    >
+    {sheetData2.map((item, index) => (
+    <div slot="describe" class="text-secondary text-base md:text-xl font-mono align-bottom mr-3">{item[1]}</div>
+    ))}
+    </Head>
+  </div>
+
+<header class="global-nav">
+<Menu
+title1="blog"
+link1="#blog"
+
+title2="about"
+link2="#history"
+
+title3="connect"
+link3="#footer"
+/>
+</header>
+
+<!--blog -->
+<!--プライマリーカラーは#006d3e -->
+<div class="md:m-4 rounded-3xl font-mono bg-container2 md:p-8 p-2 text-black md:border-4 md:border-x-4">
+
+  <div id="blog" class="flex h-full w-full mt-4">
+    <div  class="p-4 m-2 rounded-xl  border-black">
+    <h1 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
+    <p class="flex text-black">murmur</p>
+    </div>
+      <a href="../blog" aria-label="Find more blog posts" class="m-2 rounded-full bg-button border-black colorChange
+      border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r flex-none p-4 font-mono flex justify-center items-center ">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 " viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+      </a>
+  </div>
+  
+  <!--blogカード-->
+  <div  class="grid md:grid-cols-3 md:gap-4">
+
+    {
+      PostsbyTag.length === 0 ? (
+        <NoContents contents={PostsbyTag} />
+      ) : (
+      PostsbyTag.map((post) => (
+          <div class="relative {styles.post} p-4 m-2 bg-surface rounded-xl border-black text-black colorChange 
+           border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
+           active:border-t-4 active:border-l-4 active:border-b active:border-r
+          ">
+            
+            <PostDate post={post} />
+            <PostTitle post={post} />
+            <!--<PostFeaturedImage post={post} />-->
+            <PostExcerpt post={post} />
+            <ReadMoreLink post={post} />
+            <PostTags post={post} />
+             
+          </div>
+        ))
+      )
+    }
+  </div>
+</div>
+<!--私について -->
+<div id="about" class="text-black md:m-4 font-mono ">
+  <div class="h-full w-full mt-4">
+    <div  class="p-4 mt-4 bg-transparent">
+      <h1 class="flex text-4xl md:text-5xl font-mono font-bold text-black">Who am I</h1>
+      <p class="flex text-black">Yes, This is me.</p>
+    </div>  
+  <About
+  sheet="About!A3:F3"
+  />
+  </div>
+</div>
+
+
+<!--経歴とか-->
+<div id="history" class="md:m-4 font-mono text-white lg:flex bg-transparent">
+      <div class="h-full w-full mt-4">
+        <div  class="p-4 mt-4 bg-transparent">
+          <h1 class="flex text-4xl md:text-5xl font-mono font-bold text-black">What I did</h1>
+          <p class="flex text-black">There is Lot of things what I did</p>
+        </div>
+        <History
+      sheet="History-EN!A2:K100"
+      />
+      </div>
+</div>
+
+<div id="footer">
+  <Footer
+  Sheet="Socials!B2:G100"
+  />
+</div>
+</body>
+</html>
+<style>
+body{
+  background-image: linear-gradient(0deg, transparent 31px, #9ca3af 32px),linear-gradient(90deg,  transparent 31px, #9ca3af 32px);
+  background-size: 32px 32px;
+} 
+</style>

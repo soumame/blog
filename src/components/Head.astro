@@ -1,0 +1,90 @@
+---
+import Socials from '../components/Socials.astro'
+import { languages } from '../i18n/ui';
+const { Title, Sub } = Astro.props;
+import { ViewTransitions } from 'astro:transitions';
+---
+<div class="h-full md:m-4 md:p-8 p-2 text-black">
+    <!--言語選択-->
+      <ul class="py-2 text-sm text-black dark:text-gray-200 flex mt-3 mb-10 p-2" aria-labelledby="dropdownDefaultButton">
+        {Object.entries(languages).map(([lang, label]) => (
+          <li>
+            <a href={`/${lang}`} class="colorChange p-4 px-5 m-2 rounded-xl font-bold text-base md:text-lg bg-surface border-black border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r">{label}</a>
+          </li>
+        ))}
+      </ul>
+    <!--名前・アイコン・役職・年齢-->
+    
+    <!--ぷよぷよ-->
+    <div class="bg-transparent text-black rounded-xl p-2">
+      <div class="circle md:w-80 md:h-80 w-48 h-48 absolute md:outline bg-transparent z-[-1] outline outline-2 outline-offset-2 outline-tertialy"></div>
+      <!--flexボックス -->
+      <div class="w-full m-2 my-5">    
+          <!--タイトル -->
+          <div class="md:flex">
+            <img src="/favicon.svg" class="md:hidden h-16 w-16 ml-2 mt-2" alt="soumame logo"/>
+            <h1 class="text-primary font-mono text-5xl md:text-7xl my-3 ">{Title}</h1> 
+            <img src="/favicon.svg" class="md:block hidden h-20 w-20 ml-2 mt-2" alt="soumame logo" />
+          </div>
+          <h2 class="text-secondary font-mono md:text-3xl text-2xl align-bottom my-3">{Sub}</h2>
+          <!--説明文 -->
+          <slot name="describe"/>
+          <slot name="bio"/>
+
+      </div>
+      <Socials
+      Sheet="Socials!B2:G100"
+      />
+    </div>
+  </div>
+  <style>
+    .circle{
+      border-radius: 50%;
+      padding-top: 10%;
+    
+      animation-name: puyopuyo;
+      animation-duration: 20.0s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+  }
+  
+  @keyframes puyopuyo{  
+      0%{
+          border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+          transform: translate(0px,0px) scale(1,1) rotate(0deg) skew(0deg,0deg);
+    
+      }
+      14%{
+          border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+      }
+      28%{
+          border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+      }
+      42%{
+          border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
+      }
+      56%{
+          border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+          transform: translate(0px,0px) scale(1.2,1.2) rotate(90deg) skew(0deg,0deg);
+      }
+      70%{
+          border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+      }
+      84%{
+          border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+          
+      }
+      100%{
+          border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+          transform: translate(0px,0px) scale(1,1) rotate(deg) skew(0deg,0deg);
+      }
+  }
+  .animated {
+	-webkit-animation-duration: 20s;
+	animation-duration: 20s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+  </style>
