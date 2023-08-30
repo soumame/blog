@@ -62,7 +62,7 @@ const data = await response.json();
 const sheetData = data.values;
 
 // APIからbioデータを取得するところ。ピポピポ。
-const response2 = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Bio!B2:C2/?key=${SHEET_API_KEY}`);
+const response2 = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Bio!C2:C2/?key=${SHEET_API_KEY}`);
 const data2 = await response2.json();
 const sheetData2 = data2.values;
 
@@ -80,9 +80,9 @@ const sheetData2 = data2.values;
   <link rel=alternate href={`${siteURL}/`} hreflang="x-default" />  
 
   {sheetData2.map((item, index) => (
-  <meta name="description" content={item[1]} />
-  <meta property="og:description" content={item[1]} />
-  <meta name="twitter:description" content={item[1]} />
+  <meta name="description" content={item[0]} />
+  <meta property="og:description" content={item[0]} />
+  <meta name="twitter:description" content={item[0]} />
   ))}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon-precomposed" href="/soumame.png" />
@@ -118,7 +118,7 @@ const sheetData2 = data2.values;
     Sub="Mr.Bean"
     >
     {sheetData2.map((item, index) => (
-    <div slot="describe" class="text-secondary text-base md:text-xl font-mono align-bottom mr-3">{item[1]}</div>
+    <div slot="describe" class="text-secondary text-base md:text-xl font-mono align-bottom mr-3">{item[0]}</div>
     ))}
     </Head>
   </div>
