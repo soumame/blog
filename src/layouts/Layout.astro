@@ -77,7 +77,6 @@ import { ViewTransitions } from 'astro:transitions';
     />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
 
-    <ViewTransitions />
   </head>
   <body class="bg-white">
     <GoogleAnalytics trackingId={'G-ZSQ9BEHZ6R'} />
@@ -86,13 +85,15 @@ import { ViewTransitions } from 'astro:transitions';
         {
           coverImageURL && (
               
-              <div class="flex font-mono text-black text-xl md:text-4xl font-bold m-2">
-                <a href={getNavLink("/")} class="m-2 p-2 rounded-xl 
+              <div class="flex font-mono text-black text-xl md:text-2xl font-bold m-2 bg-surface rounded-3xl">
+                <a href={getNavLink("/")} class="m-2 p-2 rounded-xl bg-button flex justify-center items-center 
+                border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r
                 ">
                   <img class="w-10 h-10" src="/favicon.svg"></img>
                   <p class="text-xs text-center font-bold">Home</p>
                 </a>
-                <a href={getNavLink('/blog')} class="m-2 p-2 rounded-xl flex justify-center items-center 
+                <a href={getNavLink('/blog')} class="m-2 p-2 rounded-xl bg-button flex justify-center items-center 
+                border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r
                 ">
                 
                   {
@@ -126,7 +127,7 @@ import { ViewTransitions } from 'astro:transitions';
         <div class="md:m-4 mt-2 md:rounded-xl font-mono md:p-8 p-2">
         </div>
 
-        <div class="content md:m-4 mt-4 md:rounded-xl font-mono bg-surface md:p-8 text-black md:border-2 py-8 p-2">
+        <div class="content md:m-4 my-4 rounded-3xl font-mono bg-surface md:p-8 text-black md:border-2 py-8 p-2">
           <slot name="main" />
         </div>
       </main>
