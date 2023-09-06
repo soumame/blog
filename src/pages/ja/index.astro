@@ -1,6 +1,4 @@
 ---
-import { languages } from '../../i18n/ui';
-import { NUMBER_OF_POSTS_PER_PAGE } from '../../server-constants'
 
 import { getNavLink, getStaticFilePath, filePath } from '../../lib/blog-helpers.ts'
 import { getDatabase } from '../../lib/notion/client.ts'
@@ -45,7 +43,7 @@ import About from '../../components/About.astro'
 
 
 const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all([
-  getPosts(3),
+  getPosts(),
   getRankedPosts(),
   getAllTags(),
   getNumberOfPages(),
