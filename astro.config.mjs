@@ -27,7 +27,8 @@ const getSite = function () {
 
 // https://astro.build/config
 export default defineConfig({
-  site: getSite(),
+  //site: getSite(),
+  site: 'https://souto.tk',
   base: BASE_PATH,
   integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), image(), react(), 
     sitemap({
