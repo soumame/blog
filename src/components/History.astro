@@ -9,13 +9,14 @@ const data = await response.json();
 const sheetData = data.values;
 ---
 <meta charset="UTF-8">
-<div class="p-4 bg-transparent text-black">
+
+<div class="p-4 text-black">
 {
     sheetData.map((item, index) => ( // 複数のレスポンスをループで回す！最高かよ　<h2>{index+1}</h2>
     // ここから下がレスポンスの表示の仕方。HTMLと同じように書けるので、わりと簡単にできる。item0,1,2,3,4,5,6,7はそれぞれ、スプレッドシートのA,B,C,D,E,F,G,H列に対応している。
     //0-いつ,1-どこで,2-何を(タイトル),3-どのように(概要),4-リンク,5-色class取得,6-色選択(これは取得してない),7-タグ
     <div class="flex relative border-black border-l-4 mx-2">
-        <div class={`absolute flex -left-2.5 mt-5 w-5 h-5 ${item[5]} border border-black`}/>
+        <div class={`absolute flex -left-2.5 mt-5 w-5 h-5 ${item[5]} border rounded-sm border-black`}/>
         <div class={`relative bg-surface border w-full md:w-1/2 rounded-3xl md:rounded-xl p-4 my-5 ml-4  border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r`} key={index}>
             <div class="flex">
                 <time class="text-lg">{item[0]}</time>
