@@ -84,11 +84,21 @@ const sheetData2 = data2.values;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.css" rel="stylesheet" />
 </head>
-<body>
-    <div class="flex items-center justify-center w-screen h-screen rounded-lg bg-container2 dark:bg-gray-800 dark:border-black-700">
-        <div role="status">
-            <img src="/hmm.svg" alt="logo" class="w-20 h-20 animate-spin" />
-            <span class="sr-only">Loading...</span>
+<body class="w-screen h-screen bg-container2 items-center justify-center flex">
+    <div>
+        <div class="flex items-center justify-center m-5">
+            <div class="status flex justify-center items-center">
+                <img src="/hmm.svg" alt="logo" class="w-20 h-20 animate-spin " />
+                <span class="sr-only">Loading...</span>           
+            </div>
+        </div>
+        <div class="flex flex-wrap justify-center items-center">
+            <a class="
+            border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r 
+            m-2 p-2 rounded-xl font-bold text-tertialy" href="/ja">ロード画面から抜け出せない場合はここ押してね</a>
+            <a class="
+            border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r 
+            m-2 p-2 rounded-xl font-bold text-tertialy" href="/en">Click if you stuck at loading screen</a>
         </div>
     </div>
 </body>
