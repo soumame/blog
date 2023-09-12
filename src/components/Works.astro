@@ -11,14 +11,16 @@ const sheetData = data.values;
 <div class="flex-wrap m-4 gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 {
     sheetData.map((item, index) => ( 
-    <div class="text-black">
-        <img src={item[0]} class="rounded-3xl border-2 aspect-square object-cover" alt={item[1]} loading="lazy"/> 
+    <div class="text-black my-4">
+        <img src={item[0]} class="rounded-3xl border-2 aspect-square object-cover w-96" alt={item[1]} loading="lazy"/> 
         <h3 class="text-xl md:text-2xl font-bold mt-2">{item[1]}</h3>
         <p class="text-base text-secondary mt-2">{item[2]}</p>
-            <div class="flex mt-2 ">
+            <div class="flex my-2 mb-4">
                 <span class={`w-6 h-6 fill-tertialy text-tertialy fa-solid mt-2 ${item[3]}`}></span>
                 <p class="text-base font-bold ml-2 my-2">{item[4]}</p>
             </div>
+        <a href={item[5]} class={`${item[6]} bg-button text-tertialy p-3 font-bold rounded-3xl border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r`}>{item[7]}
+            </a>
     </div>
     ))
 }
