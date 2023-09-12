@@ -53,8 +53,6 @@ const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all(
   getPostsByTag("日本語", 3),
 ])
 
-import { ViewTransitions } from 'astro:transitions';
-
 // APIからSNSのユーザーID取得するところ。ピポピポ。
 import {SHEET_API_KEY, SHEET_ID} from '../../server-constants'
 const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Socials!F2:F2/?key=${SHEET_API_KEY}`);
