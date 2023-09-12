@@ -5,7 +5,6 @@ import CustomIconDownloader from './src/integrations/custom-icon-downloader';
 import FeaturedImageDownloader from './src/integrations/featured-image-downloader';
 import PublicNotionCopier from './src/integrations/public-notion-copier';
 import tailwind from "@astrojs/tailwind";
-import image from "@astrojs/image";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 const getSite = function () {
@@ -30,7 +29,7 @@ export default defineConfig({
   //site: getSite(),
   site: 'https://souto.tk',
   base: BASE_PATH,
-  integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), image(), react(), 
+  integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), react(), 
     sitemap({
     i18n: {
       defaultLocale: 'ja', // All urls that don't contain `es` or `fr` after `https://stargazers.club/` will be treated as default locale, i.e. `en`
@@ -40,8 +39,6 @@ export default defineConfig({
       },
     },
   })],
-  experimental: {
-    viewTransitions: true
-  }
+
 });
 

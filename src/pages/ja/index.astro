@@ -39,6 +39,8 @@ import Menu from '../../components/Menu.astro';
 import History from '../../components/History.astro';
 import Footer from '../../components/Footer.astro'
 import About from '../../components/About.astro'
+import Works from '../../components/Works.astro'
+
 
 
 
@@ -210,6 +212,20 @@ link3="#footer"
       />
       </div>
 </div>
+
+<!--works -->
+<div id="history" class="md:m-4 font-mono text-white lg:flex bg-transparent">
+  <div class="h-full w-full mt-4">
+    <div  class="p-4 mt-4 bg-transparent">
+      <h2 class="flex text-4xl md:text-5xl font-mono font-bold text-black">Works</h1>
+      <p class="flex text-black">Made by So</p>
+    </div>
+    <Works
+    Sheet="Works-JA!A2:E100"
+    />
+  </div>
+</div>
+
 
 <div id="footer">
   <Footer
