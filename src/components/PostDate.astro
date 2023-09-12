@@ -9,7 +9,7 @@ export interface Props {
 const { post } = Astro.props
 ---
 
-<h2 class="post-date text-secondary">
+<h2 class="post-date text-secondary" transition:name="hero">
   {post.Date ? getDateStr(post.Date) : ''}
 </h2>
 

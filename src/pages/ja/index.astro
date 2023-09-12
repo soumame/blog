@@ -41,6 +41,9 @@ import Footer from '../../components/Footer.astro'
 import About from '../../components/About.astro'
 import Works from '../../components/Works.astro'
 
+import { ViewTransitions } from 'astro:transitions';
+import { fade } from "astro:transitions";
+
 
 
 
@@ -68,6 +71,7 @@ const sheetData2 = data2.values;
 ---
 <html lang="ja">
 <head>
+  <ViewTransitions />
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKLX8T8PGT"></script>
 <script>
@@ -118,7 +122,7 @@ const sheetData2 = data2.values;
 
 
 
-<body class="bg-white">
+<body class="bg-white" transition:animate={fade({ duration: '0.5s' })}>
   <div class="hero">
     <Head
     Title="So Tokumaru"
