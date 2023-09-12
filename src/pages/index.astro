@@ -1,8 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-import { fade } from "astro:transitions";
-
-
 import { getNavLink, getStaticFilePath, filePath } from '../lib/blog-helpers.ts'
 import { getDatabase } from '../lib/notion/client.ts'
 
@@ -33,7 +29,6 @@ const sheetData2 = data2.values;
 <!--インデックス拒否　言語別の重複を避けるため -->
 <meta name="robots" content="noindex" />
 <head>
-    <ViewTransitions />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKLX8T8PGT"></script>
     <script>

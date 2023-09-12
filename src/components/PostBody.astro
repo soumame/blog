@@ -1,5 +1,4 @@
 ---
-import { fade } from "astro:transitions";
 import { Block } from '../lib/interfaces.ts'
 import NotionBlocks from './NotionBlocks.astro'
 
@@ -10,7 +9,7 @@ export interface Props {
 const { blocks } = Astro.props
 ---
 
-<div class="post-body" transition:animate={fade({ duration: '0.5s' })}>
+<div class="post-body">
   <NotionBlocks blocks={blocks} isRoot={true} />
 </div>
 

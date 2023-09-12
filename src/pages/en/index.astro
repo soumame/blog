@@ -41,9 +41,6 @@ import Footer from '../../components/Footer.astro'
 import About from '../../components/About.astro'
 import Works from '../../components/Works.astro'
 
-import { ViewTransitions } from 'astro:transitions';
-import { fade } from "astro:transitions";
-
 
 
 const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all([
@@ -54,6 +51,8 @@ const [posts, rankedPosts, tags, numberOfPages, PostsbyTag] = await Promise.all(
   //Englishの記事を取得する
   getPostsByTag("English", 3),
 ])
+
+import { ViewTransitions } from 'astro:transitions';
 
 // APIからSNSのユーザーID取得するところ。ピポピポ。
 import {SHEET_API_KEY, SHEET_ID} from '../../server-constants'
@@ -69,7 +68,6 @@ const sheetData2 = data2.values;
 ---
 <html lang="ja">
 <head>
-  <ViewTransitions />
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKLX8T8PGT"></script>
 <script>
@@ -120,7 +118,7 @@ const sheetData2 = data2.values;
 
 
 
-<body class="bg-white" transition:animate={fade({ duration: '0.5s' })}>
+<body class="bg-white">
   <div class="hero">
     <Head
     Title="So Tokumaru"
