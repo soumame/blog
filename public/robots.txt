@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://souto.tk/sitemap-index.xml
+Sitemap: https://so-bean.work/sitemap-index.xml
