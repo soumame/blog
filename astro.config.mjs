@@ -27,7 +27,7 @@ const getSite = function () {
 // https://astro.build/config
 export default defineConfig({
   //site: getSite(),
-  site: 'https://souto.tk',
+  site: 'https://so-bean.work',
   base: BASE_PATH,
   integrations: [CoverImageDownloader(), CustomIconDownloader(), FeaturedImageDownloader(), PublicNotionCopier(), tailwind(), react(), 
     sitemap({
