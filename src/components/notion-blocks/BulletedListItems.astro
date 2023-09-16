@@ -13,12 +13,12 @@ export interface Props {
 const { block, headings } = Astro.props
 ---
 
-<ul>
+<ul class="text-base list-disc list-outside">
   {
     block.ListItems.filter(
       (b: interfaces.Block) => b.Type === 'bulleted_list_item'
     ).map((b: interfaces.Block) => (
-      <li class={snakeToKebab(b.BulletedListItem.Color)}>
+      <li class={`${snakeToKebab(b.BulletedListItem.Color)} my-1`}>
         {b.BulletedListItem.RichTexts.map((richText: interfaces.RichText) => (
           <RichText richText={richText} />
         ))}
@@ -32,9 +32,3 @@ const { block, headings } = Astro.props
     ))
   }
 </ul>
-
-<style>
-  ul {
-    font-size: 1rem;
-  }
-</style>

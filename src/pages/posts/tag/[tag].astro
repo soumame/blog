@@ -51,7 +51,7 @@ const currentTag = posts[0].Tags.find((t) => t.name === tag)
         posts.map((post) => (
           <div class="relative p-4 m-2 bg-surface rounded-xl border-black colorChange 
              border border-b-4 border-r-4 flex flex-col
-             active:border-t-4 active:border-l-4 active:border-b active:border-r" key={post.Slug}>
+             hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r" key={post.Slug}>
             <PostDate post={post} />
             <PostTags post={post} />
             <PostTitle post={post} />
