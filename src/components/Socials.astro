@@ -13,7 +13,7 @@ const sheetData = data.values;
 {
     sheetData.map((item, index) => ( 
       <a href={item[2]} target="_blank" aria-label={item[3]} class="bg-button p-4 md:m-2 m-1 rounded-xl border-black
-      border border-b-4 border-r-4 active:border-t-4 active:border-l-4 active:border-b active:border-r
+      border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
       font-medium leading-normal flex flex-intial space-x-2 text-2xl align-bottom
       ">
       <span class={`w-6 h-6 md:w-10 md:h-10 fill-tertialy fa-solid ${item[1]}`}></span>

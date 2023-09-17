@@ -11,7 +11,7 @@ export interface Props {
 
 const { block, headings } = Astro.props
 ---
-
+<div class="flex">
 <div class="table-of-contents border-black rounded-xl border p-2 mx-4 py-4">
   {
     headings.map((headingBlock: interfaces.Block) => {
@@ -19,16 +19,18 @@ const { block, headings } = Astro.props
         headingBlock.Heading1 || headingBlock.Heading2 || headingBlock.Heading3
 
       let indentClass = ''
-      if (headingBlock.Type === 'heading_2') {
-        indentClass = 'indent-1'
+      if (headingBlock.Type === 'heading_1') {
+        indentClass = "my-2 p-2 font-bold text-lg text-primary underline underline-offset-8"
+      } else if (headingBlock.Type === 'heading_2') {
+        indentClass = "my-1 p-2 indent-4 font-semibold text-base text-secondary underline underline-offset-4"
       } else if (headingBlock.Type === 'heading_3') {
-        indentClass = 'indent-2'
+        indentClass = "my-1 p-1 indent-8 font-meidium text-sm text-tertiary"
       }
 
       return (
         <a
           href={`#${buildHeadingId(heading)}`}
-          class={`table-of-contents block p-2 my-2 text-sm underline rounded-full text-primary hover:bg-container2 active:bg-container hover:outline ${snakeToKebab(
+          class={`table-of-contents block rounded-full hover:bg-container2 active:bg-container hover:outline ${snakeToKebab(
             block.TableOfContents.Color
           )} ${indentClass} `}
         >
@@ -40,20 +42,4 @@ const { block, headings } = Astro.props
     })
   }
 </div>
-
-<style>
-  .table-of-contents {
-
-  }
-  .table-of-contents > a {
-
-  }
-  .table-of-contents > a:hover {
-  }
-  .table-of-contents > a.indent-1 {
-    padding-left: 1.5rem;
-  }
-  .table-of-contents > a.indent-2 {
-    padding-left: 3rem;
-  }
-</style>
+</div>
