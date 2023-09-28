@@ -12,7 +12,7 @@ const sheetData = data.values;
 {
     sheetData.map((item, index) => ( 
     <div class="text-black my-4">
-        <img src={item[0]} class="rounded-3xl border-2 aspect-square object-cover w-96" alt={item[1]} loading="lazy"/> 
+        <img src={item[0]} class="rounded-3xl border-2 object-cover aspect-square bg-white" alt={item[1]} loading="lazy"/> 
         <h3 class="text-xl md:text-2xl font-bold mt-2">{item[1]}</h3>
         <p class="text-base text-secondary mt-2">{item[2]}</p>
             <div class="flex my-2 mb-4">
