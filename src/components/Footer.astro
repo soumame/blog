@@ -20,28 +20,28 @@ const t = useTranslations(lang);
   <script src="https://kit.fontawesome.com/e09742380f.js" crossorigin="anonymous"></script>
 </head>
 
-<div id="footer" class="md:rounded-3xl rounded-t-3xl md:border-4 md:mt-4 md:p-8 p-2 md:m-4 text-white bg-outline">
-  <div class="flex justify-between flex-wrap h-full w-full mt-4">
+<div id="footer" class="md:rounded-3xl rounded-t-3xl md:border-4 border-black md:mt-4 md:p-8 p-2 md:m-4 text-white bg-outline">
+  <div class="sm:flex sm:justify-between flex-wrap h-full w-full my-4">
 
         <!--サイトマップ -->
-        <div class="p-4 m-2 md:mt-4 content-end">
-          <a href={`/${lang}/`} class="break-keep m-2 bg-button text-secondary p-3 font-bold rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+        <div class="flex flex-col sm:flex-row m-4 md:mt-4 content-end">
+          <a href={`/${lang}/`} aria-label="home" class=" m-2 bg-button text-secondary p-3 font-bold rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
             Home</a>
-              <a href={`/${lang}/#about`} class="break-keep m-2 bg-button text-tertialy p-3 rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+              <a href={`/${lang}/#about`} aria-label="about" class=" m-2 bg-button text-tertialy p-3 rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
                 About</a>
-              <a href={`/${lang}/#history`} class="break-keep m-2 bg-button text-tertialy p-3  rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+              <a href={`/${lang}/#history`} aria-label="career" class=" m-2 bg-button text-tertialy p-3  rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
               Career</a>
-              <a href={`/${lang}/#footer`} class="break-keep m-2 bg-button text-tertialy p-3 rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+              <a href={`/${lang}/#footer`} aria-label="contact" class=" m-2 bg-button text-tertialy p-3 rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
                 Contact</a>
-          <a href="/blog" class="break-keep m-2 bg-button text-secondary p-3 font-bold rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
+          <a href="/blog" aria-label="blog" class="break-keep m-2 bg-button text-secondary p-3 font-bold rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">
             Blog</a>
  
         </div>
-        <div>
-          <ul class="p-4 m-2 md:mt-4 text-sm text-black dark:text-gray-200 flex" aria-labelledby="dropdownDefaultButton">
+        <div class="flex m-4 md:mt-4 text-sm content-end">
+          <ul class="text-black dark:text-gray-200 flex" aria-labelledby="dropdownDefaultButton">
             {Object.entries(languages).map(([lang, label]) => (
               <li>
-                <a href={`/${lang}`} class="break-keep m-2 bg-surface text-secondary p-3 font-bold rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">{label}</a>
+                <a href={`/${lang}`} aria-label={`switch language to ${lang}`} class="break-keep m-2 bg-surface text-secondary p-3 font-bold rounded-3xl border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">{label}</a>
               </li>
             ))}
           </ul>
