@@ -6,10 +6,10 @@ import { ViewTransitions } from 'astro:transitions';
 ---
 <div class="h-full md:m-4 md:p-8 p-2 text-black">
     <!--言語選択-->
-      <ul class="py-2 text-sm text-black dark:text-gray-200 flex mt-3 mb-10 p-2" aria-labelledby="dropdownDefaultButton">
+      <ul  class="py-2 text-sm text-black dark:text-gray-200 flex mt-3 mb-10 p-2" aria-labelledby="dropdownDefaultButton">
         {Object.entries(languages).map(([lang, label]) => (
           <li>
-            <a href={`/${lang}`} class="colorChange p-4 px-5 m-2 rounded-xl font-bold text-base md:text-lg bg-surface border-black border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">{label}</a>
+            <a href={`/${lang}`} aria-label={`switch language to ${lang}`} class="colorChange p-4 px-5 m-2 rounded-2xl font-bold text-base md:text-lg bg-surface border-black border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r">{label}</a>
           </li>
         ))}
       </ul>
