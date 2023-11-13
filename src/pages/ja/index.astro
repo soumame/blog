@@ -41,6 +41,8 @@ import Footer from '../../components/Footer.astro'
 import About from '../../components/About.astro'
 import Works from '../../components/Works.astro'
 
+import note from "../../rss/items.json";
+
 
 
 
@@ -150,10 +152,10 @@ link3="#footer"
 
   <div id="blog" class="flex h-full w-full mt-4">
     <div  class="p-4 m-2 rounded-xl  border-black">
-    <h2 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Blogs</h1>
-    <p class="flex text-black">最新の３件を表示しています</p>
+    <h2 class="flex mb-2 text-4xl md:text-5xl font-mono font-bold">Notes</h1>
+    <p class="flex text-black">最新の６件を表示しています</p>
     </div>
-      <a href="../blog" aria-label="Find more blog posts" class="m-2 rounded-full bg-button border-black colorChange
+      <a href="https://note.com/soto9/" aria-label="Find more blog posts" class="m-2 rounded-full bg-button border-black colorChange
       border border-b-4 border-r-4 hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r flex-none p-4 font-mono flex justify-center items-center ">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 " viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
       </a>
@@ -163,22 +165,22 @@ link3="#footer"
   <div  class="grid md:grid-cols-3 md:gap-4">
 
     {
-      PostsbyTag.length === 0 ? (
-        <NoContents contents={PostsbyTag} />
+      note.length === 0 ? (
+        <NoContents/>
       ) : (
-      PostsbyTag.map((post) => (
+      note.slice(0, 6).map(({ title, contentSnippet, og, link }) => (
           <div class="relative {styles.post} p-4 m-2 bg-surface rounded-xl border-black text-black colorChange 
            border border-b-4 border-r-4 flex flex-col overflow-hidden absolute
            hover:border-t-4 hover:border-l-4 hover:border-b hover:border-r
           ">
-            
-            <PostDate post={post} />
-            <PostTitle post={post} />
-            <!--<PostFeaturedImage post={post} />-->
-            <PostExcerpt post={post} />
-            <ReadMoreLink post={post} />
-            <PostTags post={post} />
-             
+          <div class="post-featured-image">
+          <img src={og} alt="post-featured-image" loading="lazy" class="aspect-auto	rounded-3xl mb-2"/>
+          </div>
+          <h3 class="post-title text-black font-medium text-lg md:text-2xl">{title}</h3>
+          <div class="post-excerpt font-base text-secondary">
+          <p class="line-clamp-3">{contentSnippet}</p>
+          </div>
+          <a class="read-more-link absolute top-0 left-0 w-[100%] h-[100%]" href={link} aria-label="Read more link"></a>
           </div>
         ))
       )

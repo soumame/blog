@@ -4,9 +4,10 @@
   "version": "0.5.0",
   "private": true,
   "scripts": {
+    "update-rss": "node ./src/rss/rss-parser.mjs",
     "dev": "astro dev --host",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build & npm run update-rss",
     "build:cached": "npm run cache:fetch && astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -36,9 +37,11 @@
     "metascraper-description": "^5.36.0",
     "metascraper-image": "^5.36.0",
     "metascraper-title": "^5.36.0",
+    "open-graph-scraper": "^6.3.2",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rss-parser": "^3.13.0",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
